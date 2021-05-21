@@ -2,7 +2,6 @@ import React from 'react';
 import { BigHead } from 'react-native-bigheads'
 
 const Avatar = (props) => {
-    console.log("hairColor : ", props.hairColor)
     return (
         <BigHead
             accessory="shades"
