@@ -22,7 +22,7 @@ const Avatar = (props) => {
             lipColor="purple"
             mouth="open"
             showBackground={true}
-            size={300}
+            size={props.size}
             skinTone="brown"
         />
     )

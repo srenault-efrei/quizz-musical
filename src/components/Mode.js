@@ -1,12 +1,24 @@
-import React from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 
 
-const Mode = () => {
+const Mode = (props) => {
+    const [indexMode, setIndexMode] = useState()
+
+    const handlePress = async (indexMode) => {
+        setIndexMode(indexMode)
+        // await playSound()
+        props.navigation.navigate("WaitingRoom", { indexMode })
+    }
+
 
     return (
         <>
-            <View style={styles.viewLabelMode}>
+            <TouchableOpacity style={styles.viewLabelMode}
+                onPress={async () => {
+                    handlePress(0)
+                }}
+            >
                 <Image
                     source={{
                         uri: 'https://static.thenounproject.com/png/2119141-200.png',
@@ -17,8 +29,11 @@ const Mode = () => {
                 <Text style={styles.labelMode}>
                     POP
               </Text>
-            </View>
-            <View style={styles.viewLabelMode}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.viewLabelMode}
+                onPress={() => {
+                    handlePress(1)
+                }}>
                 <Image
                     source={{
                         uri: 'https://img.icons8.com/ios/452/rap.png',
@@ -28,8 +43,12 @@ const Mode = () => {
                 <Text style={styles.labelMode}>
                     RAP
               </Text>
-            </View>
-            <View style={styles.viewLabelMode}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.viewLabelMode}
+                onPress={() => {
+                    handlePress(2)
+                }}
+            >
                 <Image
                     source={{
                         uri: 'https://cdn3.iconfinder.com/data/icons/interaction-design/512/Hand_D-512.png',
@@ -39,8 +58,12 @@ const Mode = () => {
                 <Text style={styles.labelMode}>
                     ROCK
               </Text>
-            </View>
-            <View style={styles.viewLabelMode}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.viewLabelMode}
+                onPress={() => {
+                    handlePress(3)
+                }}
+            >
                 <Image
                     source={{
                         uri: 'https://img.icons8.com/ios/452/reggae.png',
@@ -51,7 +74,7 @@ const Mode = () => {
                 <Text style={styles.labelMode}>
                     REGGAE
               </Text>
-            </View>
+            </TouchableOpacity>
         </>
     )
 }
