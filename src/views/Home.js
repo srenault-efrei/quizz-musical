@@ -1,28 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import { View, ImageBackground, StyleSheet } from 'react-native';
 import Avatar from '../components/Avatar';
 import Mode from '../components/Mode';
+import PersonalizeAvatar from '../components/PersonalizeAvatar';
 
 
 const image = { uri: "https://img.pixers.pics/pho_wat(s3:700/FO/64/91/41/38/700_FO64914138_bc4676ea52e53b3a655d1beeadca1e88.jpg,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/papiers-peints-fond-musical-colore.jpg.jpg" };
 
 const Home = () => {
+    const [avatarProps, setAvatarProps] = useState({
+        accessory: "shades",
+        bgColor: "blue",
+        bgShape: "circle",
+        body: "chest",
+        clothing: "tankTop",
+        clothingColor: "black",
+        eyebrows: "angry",
+        eyes: "wink",
+        facialHair: "mediumBeard",
+        graphic: "vue",
+        hair: "short",
+        hairColor: "white",
+        hat: "none",
+        hatColor: "green",
+        lashes: false,
+        lipColor: "purple",
+        mouth: "open",
+        showBackground: false,
+        size: 300,
+        skinTone: "brown",
+    })
 
     return (
         <View style={styles.container}>
-
-
             <ImageBackground source={image} style={styles.image}>
                 <View style={styles.content}>
                     <View style={styles.avatar}>
-                        <Avatar hairColor="white" />
+                        <Avatar avatarProps={avatarProps} />
                     </View>
                     <View style={styles.mode}>
-                        <Mode />
+                        <PersonalizeAvatar avatarProps={avatarProps} setAvatarProps={setAvatarProps} />
                     </View>
                 </View>
             </ImageBackground>
-
         </View>
     )
 }
