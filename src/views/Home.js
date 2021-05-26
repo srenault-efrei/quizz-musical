@@ -23,7 +23,7 @@ const Home = () => {
         hairColor: "white",
         hat: "none",
         hatColor: "green",
-        lashes: false,
+        lashes: true,
         lipColor: "purple",
         mouth: "open",
         showBackground: false,
