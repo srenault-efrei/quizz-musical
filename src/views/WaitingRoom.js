@@ -16,7 +16,11 @@ const WaitingRoom = (props) => {
 
   React.useEffect(() => {
     getSongs();
-    setCode("NomDuSAlon-DSDLXSDSDL");
+    if (props.route.params.code) {
+      setCode(props.route.params.code);
+    } else {
+      setCode("NomDuSAlon-DSDLXSDSDL");
+    }
   }, []);
 
   const getSongs = async () => {
@@ -129,7 +133,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    opacity: 0.5,
     alignItems: "center",
   },
   viewCode: {

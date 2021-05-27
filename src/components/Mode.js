@@ -9,6 +9,9 @@ const Mode = (props) => {
     const [indexMode, setIndexMode] = useState()
 
     const handlePress = async (indexMode, props) => {
+        if (props.closeAllModal) {
+            props.closeAllModal()
+        }
         setIndexMode(indexMode)
         // await playSound()
         props.navigation.navigate("WaitingRoom", { indexMode, sound: props.sound })
