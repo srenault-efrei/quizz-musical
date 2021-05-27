@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { BigHead } from 'react-native-bigheads'
 
 const Avatar = (props) => {
