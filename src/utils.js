@@ -7,3 +7,12 @@ export const modes = [
 ]
 
 
+
+export const gifs = [
+    require("../assets/gifs/0.gif"),
+    require("../assets/gifs/1.gif"),
+    require("../assets/gifs/2.gif"),
+    require("../assets/gifs/3.gif")
+]
+
+
