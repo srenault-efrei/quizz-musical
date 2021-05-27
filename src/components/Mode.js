@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Image, TouchableOpacity, LogBox } from 'react-native';
 
+LogBox.ignoreLogs([
+    'Non-serializable values were found in the navigation state',
+]);
 
 const Mode = (props) => {
     const [indexMode, setIndexMode] = useState()
 
-    const handlePress = async (indexMode) => {
+    const handlePress = async (indexMode, props) => {
         setIndexMode(indexMode)
         // await playSound()
-        props.navigation.navigate("WaitingRoom", { indexMode })
+        props.navigation.navigate("WaitingRoom", { indexMode, sound: props.sound })
     }
 
 
@@ -16,7 +19,7 @@ const Mode = (props) => {
         <>
             <TouchableOpacity style={styles.viewLabelMode}
                 onPress={async () => {
-                    handlePress(0)
+                    handlePress(0, props)
                 }}
             >
                 <Image
@@ -32,7 +35,7 @@ const Mode = (props) => {
             </TouchableOpacity>
             <TouchableOpacity style={styles.viewLabelMode}
                 onPress={() => {
-                    handlePress(1)
+                    handlePress(1, props)
                 }}>
                 <Image
                     source={{
@@ -46,7 +49,7 @@ const Mode = (props) => {
             </TouchableOpacity>
             <TouchableOpacity style={styles.viewLabelMode}
                 onPress={() => {
-                    handlePress(2)
+                    handlePress(2, props)
                 }}
             >
                 <Image
@@ -61,7 +64,7 @@ const Mode = (props) => {
             </TouchableOpacity>
             <TouchableOpacity style={styles.viewLabelMode}
                 onPress={() => {
-                    handlePress(3)
+                    handlePress(3, props)
                 }}
             >
                 <Image

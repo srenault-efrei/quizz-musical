@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { View, ImageBackground, StyleSheet } from 'react-native';
+import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import Avatar from '../components/Avatar';
 import Mode from '../components/Mode';
 import { Audio } from 'expo-av';
 import * as Animatable from 'react-native-animatable';
 
 
-const image = { uri: "https://img.pixers.pics/pho_wat(s3:700/FO/64/91/41/38/700_FO64914138_bc4676ea52e53b3a655d1beeadca1e88.jpg,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/papiers-peints-fond-musical-colore.jpg.jpg" };
 
 const Home = (props) => {
+    const [sound, setSound] = useState()
+    const image = { uri: "https://img.pixers.pics/pho_wat(s3:700/FO/64/91/41/38/700_FO64914138_bc4676ea52e53b3a655d1beeadca1e88.jpg,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/papiers-peints-fond-musical-colore.jpg.jpg" };
 
     const playSound = async () => {
 
         const { sound } = await Audio.Sound.createAsync(
-            require('../../assets/home.mp3')
+            require('../../assets/songs/home.mp3')
 
         );
 
         await sound.playAsync();
-        // setSound(sound);
+        setSound(sound);
     }
 
     useEffect(() => {
@@ -40,7 +41,7 @@ const Home = (props) => {
 
                     </View>
                     <View style={styles.mode}>
-                        <Mode navigation={props.navigation} />
+                        <Mode navigation={props.navigation} sound={sound} />
                     </View>
                 </View>
             </ImageBackground>
