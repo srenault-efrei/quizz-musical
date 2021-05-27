@@ -5,37 +5,37 @@
   - _event_ `userCreated`
   - _feature_ `createUser`
 
-- une partie a été crée | la création d'une partie a échoué --> gameCreated
+- une partie a été crée | la création d'une partie a échoué
 
   - _event_ `gameCreated`
   - _feature_ `createGame`
 
-- un joueur a rejoint la partie --> userJoined
+- un joueur a rejoint la partie
 
   - _event_ `userJoined`
   - _feature_ `joinPrivateParty`
   - _feature 2_ `joinPublicParty`
 
-- un joueur a été éliminé --> eliminate
+- un joueur a été éliminé
 
   - _event_ `eliminate`
   - _feature_ `eliminateUser`
 
-- une partie est terminée --> endGame
+- une partie est terminée
 
   - _event_ `endGame`
   - _feature_ `endGame`
 
-- la réponse d'un joueur est envoyée au serveur | le résultat d'une réponse a été renvoyé par le serveur --> answer
+- la réponse d'un joueur est envoyée au serveur | le résultat d'une réponse a été renvoyé par le serveur
 
   - _event_ `answer`
   - _feature_ `sendAnswer`
 
-- commencer une partie --> start
+- commencer une partie
 
   - _event_ `start`
   - _feature_ `startGame`
 
-- un joueur a buzzé --> buzz
+- un joueur a buzzé
   - _event_ `buzz`
   - _feature_ `buzz`
