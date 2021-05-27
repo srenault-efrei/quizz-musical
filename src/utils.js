@@ -3,27 +3,31 @@ import { View, Text } from 'react-native'
 
 import styles from '../assets/styles/styles'
 
-const colors = {
-
+export const colors = {
+    clothing: { white: '#FFFFFF', blue: '#85C5E5', black: '#633749', green: '#89D86F', red: '#D67070' },
+    hair: { blonde: '#FEDC58', orange: '#D96E27', black: '#592D3D', white: '#FFFFFF', brown: '#A56941', blue: '#85C5E5', pink: '#D69AC7' },
+    hat: { white: '#FFFFFF', blue: '#85C5E5', black: '#5E3244', green: '#89D86F', red: '#D67070' },
+    mouth: { red: '#DD3E3E', purple: '#B256A1', pink: '#D69AC7', turqoise: '#5CCBF1', green: '#4AB749' },
+    skinTone: { light: '#FDD2B2', yellow: '#FBE8B3', brown: '#D8985D', dark: '#A56941', red: '#CC734C', black: '#754437' }
 }
 
 export const avatarPropsInit = {
-    accessory: "none",      
+    accessory: "none",
     bgColor: "blue",
-    bgShape: "circle",        
+    bgShape: "circle",
     body: "chest",
-    clothing: "shirt",      
-    clothingColor: "white",   
-    eyebrows: "leftLowered",        
+    clothing: "shirt",
+    clothingColor: "white",
+    eyebrows: "leftLowered",
     eyes: "normal",
     facialHair: "none",
     graphic: "react",
     hair: "none",
-    hairColor: "blue",       
+    hairColor: "blue",
     hat: "party",
-    hatColor: "green",        
+    hatColor: "green",
     lashes: false,
-    lipColor: "purple",       
+    lipColor: "purple",
     mouth: "open",
     showBackground: false,
     size: 200,
@@ -41,19 +45,44 @@ export const avatarPropsList = [
             { key: 3, label: 'turban', value: 'turban', component: (<Text>turban</Text>) },
             { key: 4, label: 'party', value: 'party', component: (<Text>party</Text>) },
             { key: 5, label: 'hijab', value: 'hijab', component: (<Text>hijab</Text>) }
-        ]
-    },
-    {
-        name: 'Hat color',
-        label: 'hatColor',
-        type: 'colors',
-        selectors: [
-            { key: 1, label: 'white', value: 'white', component: (<Text>white</Text>) },
-            { key: 2, label: 'blue', value: 'blue', component: (<Text>blue</Text>) },
-            { key: 3, label: 'black', value: 'black', component: (<Text>black</Text>) },
-            { key: 4, label: 'green', value: 'green', component: (<Text>green</Text>) },
-            { key: 5, label: 'red', value: 'red', component: (<Text>red</Text>) }
-        ]
+        ],
+        colors: {
+            name: 'Hat color',
+            label: 'hatColor',
+            type: 'colors',
+            selectors: [
+                {
+                    key: 1, label: 'white', value: 'white', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.hat.white }]}>
+                            <Text style={{ color: 'black' }}>Blanc</Text>
+                        </View>)
+                },
+                {
+                    key: 2, label: 'blue', value: 'blue', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.hat.blue }]}>
+                            <Text style={{ color: 'white' }}>Bleu</Text>
+                        </View>)
+                },
+                {
+                    key: 3, label: 'black', value: 'black', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.hat.black }]}>
+                            <Text style={{ color: 'white' }}>Noir</Text>
+                        </View>)
+                },
+                {
+                    key: 4, label: 'green', value: 'green', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.hat.green }]}>
+                            <Text style={{ color: 'white' }}>Vert</Text>
+                        </View>)
+                },
+                {
+                    key: 5, label: 'red', value: 'red', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.hat.red }]}>
+                            <Text style={{ color: 'white' }}>Rouge</Text>
+                        </View>)
+                }
+            ]
+        }
     },
     {
         name: 'Hair',
@@ -70,21 +99,56 @@ export const avatarPropsList = [
             { key: 8, label: 'afro', value: 'afro', component: (<Text>afro</Text>) },
             { key: 9, label: 'bob', value: 'bob', component: (<Text>bob</Text>) },
             { key: 10, label: 'mohawk', value: 'mohawk', component: (<Text>mohawk</Text>) }
-        ]
-    },
-    {
-        name: 'Hair color',
-        label: 'hairColor',
-        type: 'colors',
-        selectors: [
-            { key: 1, label: 'blonde', value: 'blonde', component: (<Text>blonde</Text>) },
-            { key: 2, label: 'orange', value: 'orange', component: (<Text>orange</Text>) },
-            { key: 3, label: 'black', value: 'black', component: (<Text>black</Text>) },
-            { key: 4, label: 'white', value: 'white', component: (<Text>white</Text>) },
-            { key: 5, label: 'brown', value: 'brown', component: (<Text>brown</Text>) },
-            { key: 6, label: 'blue', value: 'blue', component: (<Text>blue</Text>) },
-            { key: 7, label: 'pink', value: 'pink', component: (<Text>pink</Text>) }
-        ]
+        ],
+        colors: {
+            name: 'Hair color',
+            label: 'hairColor',
+            type: 'colors',
+            selectors: [
+                {
+                    key: 1, label: 'blonde', value: 'blonde', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.hair.blonde }]}>
+                            <Text style={{ color: 'black' }}>Blond</Text>
+                        </View>)
+                },
+                {
+                    key: 2, label: 'orange', value: 'orange', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.hair.orange }]}>
+                            <Text style={{ color: 'white' }}>Orange</Text>
+                        </View>)
+                },
+                {
+                    key: 3, label: 'black', value: 'black', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.hair.black }]}>
+                            <Text style={{ color: 'white' }}>Noir</Text>
+                        </View>)
+                },
+                {
+                    key: 4, label: 'white', value: 'white', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.hair.white }]}>
+                            <Text style={{ color: 'black' }}>Blanc</Text>
+                        </View>)
+                },
+                {
+                    key: 5, label: 'brown', value: 'brown', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.hair.brown }]}>
+                            <Text style={{ color: 'white' }}>Marron</Text>
+                        </View>)
+                },
+                {
+                    key: 6, label: 'blue', value: 'blue', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.hair.blue }]}>
+                            <Text style={{ color: 'white' }}>Bleu</Text>
+                        </View>)
+                },
+                {
+                    key: 7, label: 'pink', value: 'pink', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.hair.pink }]}>
+                            <Text style={{ color: 'white' }}>Rose</Text>
+                        </View>)
+                }
+            ]
+        }
     },
     {
         name: 'Lashes',
@@ -148,24 +212,44 @@ export const avatarPropsList = [
             { key: 7, label: 'tongue', value: 'tongue', component: (<Text>tongue</Text>) },
             { key: 8, label: 'piercedTongue', value: 'piercedTongue', component: (<Text>piercedTongue</Text>) },
             { key: 9, label: 'vomitingRainbow', value: 'vomitingRainbow', component: (<Text>vomitingRainbow</Text>) }
-        ]
-    },
-    {
-        name: 'LipColor',
-        label: 'lipColor',
-        type: 'colors',
-        selectors: [
-            {
-                key: 1, label: 'red', value: 'red', component: (
-                    <View style={[styles.colorViewSelector, { backgroundColor: 'red' }]}>
-                        <Text>red</Text>
-                    </View>)
-            },
-            { key: 2, label: 'purple', value: 'purple', component: (<Text>purple</Text>) },
-            { key: 3, label: 'pink', value: 'pink', component: (<Text>pink</Text>) },
-            { key: 4, label: 'turqoise', value: 'turqoise', component: (<Text>turqoise</Text>) },
-            { key: 5, label: 'green', value: 'green', component: (<Text>green</Text>) }
-        ]
+        ],
+        colors: {
+            name: 'LipColor',
+            label: 'lipColor',
+            type: 'colors',
+            selectors: [
+                {
+                    key: 1, label: 'red', value: 'red', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.mouth.red }]}>
+                            <Text style={{ color: 'white' }}>Rouge</Text>
+                        </View>)
+                },
+                {
+                    key: 2, label: 'purple', value: 'purple', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.mouth.purple }]}>
+                            <Text style={{ color: 'white' }}>Pourpre</Text>
+                        </View>)
+                },
+                {
+                    key: 3, label: 'pink', value: 'pink', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.mouth.pink }]}>
+                            <Text style={{ color: 'white' }}>Rose</Text>
+                        </View>)
+                },
+                {
+                    key: 4, label: 'turqoise', value: 'turqoise', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.mouth.turqoise }]}>
+                            <Text style={{ color: 'white' }}>Turquoise</Text>
+                        </View>)
+                },
+                {
+                    key: 5, label: 'green', value: 'green', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.mouth.green }]}>
+                            <Text style={{ color: 'white' }}>Vert</Text>
+                        </View>)
+                }
+            ]
+        }
     },
     {
         name: 'Facial hair',
@@ -181,7 +265,7 @@ export const avatarPropsList = [
     {
         name: 'Skin tone',
         label: 'skinTone',
-        type: 'strings',
+        type: 'colors',
         selectors: [
             { key: 1, label: 'light', value: 'light', component: (<Text>light</Text>) },
             { key: 2, label: 'yellow', value: 'yellow', component: (<Text>yellow</Text>) },
@@ -228,20 +312,46 @@ export const avatarPropsList = [
             { key: 8, label: 'hoodie', value: 'hoodie', component: (<Text>hoodie</Text>) },
             { key: 9, label: 'chequeredShirt', value: 'chequeredShirt', component: (<Text>chequeredShirt</Text>) },
             { key: 10, label: 'chequeredShirtDark', value: 'chequeredShirtDark', component: (<Text>chequeredShirtDark</Text>) }
-        ]
+        ],
+        colors: {
+            name: 'Clothing color',
+            label: 'clothingColor',
+            type: 'colors',
+            selectors: [
+                {
+                    key: 1, label: 'white', value: 'white', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.clothing.white }]}>
+                            <Text style={{ color: 'black' }}>Blanc</Text>
+                        </View>)
+                },
+                {
+                    key: 2, label: 'blue', value: 'blue', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.clothing.blue }]}>
+                            <Text style={{ color: 'white' }}>Bleu</Text>
+                        </View>)
+                },
+                {
+                    key: 3, label: 'black', value: 'black', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.clothing.black }]}>
+                            <Text style={{ color: 'white' }}>Noir</Text>
+                        </View>)
+                },
+                {
+                    key: 4, label: 'green', value: 'green', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.clothing.green }]}>
+                            <Text style={{ color: 'white' }}>Vert</Text>
+                        </View>)
+                },
+                {
+                    key: 5, label: 'red', value: 'red', component: (
+                        <View style={[styles.colorViewSelector, { backgroundColor: colors.clothing.red }]}>
+                            <Text style={{ color: 'white' }}>Rouge</Text>
+                        </View>)
+                }
+            ]
+        }
     },
     {
-        name: 'Clothing color',
-        label: 'clothingColor',
-        type: 'colors',
-        selectors: [
-            { key: 1, label: 'white', value: 'white', component: (<Text>white</Text>) },
-            { key: 2, label: 'blue', value: 'blue', component: (<Text>blue</Text>) },
-            { key: 3, label: 'black', value: 'black', component: (<Text>black</Text>) },
-            { key: 4, label: 'green', value: 'green', component: (<Text>green</Text>) },
-            { key: 5, label: 'red', value: 'red', component: (<Text>red</Text>) }
-        ]
-    }, {
         name: 'Graphic',
         label: 'graphic',
         type: 'strings',

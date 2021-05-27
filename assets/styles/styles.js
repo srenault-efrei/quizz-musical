@@ -13,7 +13,6 @@ export default StyleSheet.create({
         width: "40%",
         alignItems: "center"
     },
-
     mode: {
         width: "40%",
         alignItems: "center",
@@ -24,7 +23,6 @@ export default StyleSheet.create({
         padding: 10,
         borderRadius: 10,
         borderColor: "#ccc",
-
     },
     image: {
         flex: 1,
@@ -36,9 +34,25 @@ export default StyleSheet.create({
     avatarPropView: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        height: 26
     },
     propTitle: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize: 20
+    },
+    propValueView: {
+        flexDirection: 'row',
+        height: 22,
+        borderWidth: 1,
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    propValueText: {
+        fontSize: 18,
+        textTransform: 'uppercase'
     },
     colorViewSelector: {
         flex: 1,
@@ -46,6 +60,14 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 5
+    },
+    colorViewSelectorBlock: {
+        height: 24,
+        width: 42,
+        borderRadius: 5,
+        borderWidth: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     avatarNameView: {
         height: 25,
