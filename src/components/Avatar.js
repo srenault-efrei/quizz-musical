@@ -24,7 +24,7 @@ const Avatar = (props) => {
             lipColor={avatarProps.lipColor}
             mouth={avatarProps.mouth}
             showBackground={avatarProps.showBackground}
-            size={avatarProps.size}
+            size={200}
             skinTone={avatarProps.skinTone}
         />
     )
