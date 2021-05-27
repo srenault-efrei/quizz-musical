@@ -29,9 +29,9 @@ const Home = (props) => {
 
   React.useEffect(() => {
     playSound()
-    /* createUser("Maxime");
-      createUser("Josias");
-      createUser("Fabian"); */
+    /* createUser("Maxime"); */
+    /*   createUser("Josias"); */
+    /*   createUser("Fabian"); */
     /* createGame("05176003-8254-4921-aa94-f256bbc1a2d4", 2, true); */
     /* joinPublicParty("Josias", "c35ea4d1-69e0-4961-8347-c282ce471564", 2); */
     /* createGame("37171949-e481-4e39-b1b7-de05775bfbb8", 2, true); */

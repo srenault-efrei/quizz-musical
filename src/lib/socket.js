@@ -1,6 +1,6 @@
 import io from 'socket.io-client'
 
-const socket = io('https://quizz-musical-back.herokuapp.com', {
+const socket = io(process.env.ENDPOINT, {
   extraHeaders: {
     'my-custom-header': 'abcd',
   },
