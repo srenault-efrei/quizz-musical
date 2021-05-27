@@ -39,3 +39,20 @@
 - un joueur a buzzé
   - _event_ `buzz`
   - _feature_ `buzz`
+
+## Gestion d'erreurs
+
+```typescript
+type Data = {
+  data: unknown
+  error: string
+}
+
+socket.once('<event_name>', function ({ data, error }: Data) {
+  if (error) {
+    // do something
+  } else {
+    // do someting with the data
+  }
+})
+```

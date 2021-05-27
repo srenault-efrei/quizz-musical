@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { View, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, ImageBackground, Text } from 'react-native'
 import Avatar from '../components/Avatar'
 import Mode from '../components/Mode'
 import { Audio } from 'expo-av'
@@ -11,24 +11,65 @@ import joinPrivateParty from '../lib/joinPrivateParty'
 import socket from '../lib/socket'
 import { FontAwesome5 } from '@expo/vector-icons'
 import TypeRoom from '../Modals/TypeRoom'
-import ChooseMode from '../Modals/ChooseMode'
+import PersonalizeAvatar from '../components/PersonalizeAvatar'
+import { avatarPropsInit } from '../utils'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Button, Input } from 'galio-framework'
+import styles from '../../assets/styles/styles'
 
 const Home = (props) => {
   const [sound, setSound] = React.useState()
   const [openModal, setOpenModal] = React.useState(false)
+
+  const [avatarProps, setAvatarProps] = React.useState(avatarPropsInit)
+  const [avatarName, setAvatarName] = React.useState('Anonymous')
+  const [isModifyAvatar, setModifyAvatar] = React.useState(false)
+
   const image = {
     uri: 'https://img.pixers.pics/pho_wat(s3:700/FO/64/91/41/38/700_FO64914138_bc4676ea52e53b3a655d1beeadca1e88.jpg,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/papiers-peints-fond-musical-colore.jpg.jpg',
   }
 
   const playSound = async () => {
     const { sound } = await Audio.Sound.createAsync(require('../../assets/songs/home.mp3'))
-
     await sound.playAsync()
     setSound(sound)
   }
 
+
+  const getAvatarStorage = async () => {
+    return new Promise((resolve, reject) => {
+      AsyncStorage.getItem('avatar')
+        .then(avatar => {
+          if (avatar != null) {
+            avatar = JSON.parse(avatar)
+            setAvatarProps(avatar.avatarProps)
+            setAvatarName(avatar.avatarName)
+          } else {
+            storeAvatar()
+          }
+
+          resolve(avatarProps, avatarName)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  }
+
+  const storeAvatar = async () => {
+    try {
+      await AsyncStorage.setItem('avatar', JSON.stringify({
+        avatarProps,
+        avatarName
+      }))
+    } catch (error) {
+      console.log('Local storage data Error : ', error)
+    }
+  }
+
   React.useEffect(() => {
-    playSound()
+    getAvatarStorage()
+    playSound();
     /* createUser("Maxime"); */
     /*   createUser("Josias"); */
     /*   createUser("Fabian"); */
@@ -67,67 +108,68 @@ const Home = (props) => {
     })
   }, [])
 
+  cancelModifyAvatar = () => {
+    getAvatarStorage()
+    setModifyAvatar(!isModifyAvatar)
+  }
+
+  validModifyAvatar = () => {
+    storeAvatar()
+    setModifyAvatar(!isModifyAvatar)
+  }
+
   return (
     <View style={styles.container}>
       <ImageBackground source={image} style={styles.image}>
         <View style={styles.content}>
           <View style={styles.avatar}>
             <Animatable.View animation="bounce" iterationCount={500}>
-              <Avatar hairColor="white" size={300} />
+              <Avatar avatarProps={avatarProps} />
             </Animatable.View>
+            {isModifyAvatar
+              ? <Input
+                rounded
+                placeholder={avatarName}
+                placeholderTextColor='black'
+                icon="pencil"
+                family="Entypo"
+                iconSize={14}
+                style={styles.inputName}
+                onSubmitEditing={event => setAvatarName(event.nativeEvent.text)} />
+              : <View style={styles.avatarNameView}>
+                <Text style={styles.avatarName}>{avatarName}</Text>
+              </View>}
+
+
+            {isModifyAvatar
+              ? <View style={{ flexDirection: 'row' }}>
+                <Button radius="10" size="small" color="#ccc" onPress={() => cancelModifyAvatar()}>Annuler</Button>
+                <Button radius="10" size="small" color="success" onPress={() => validModifyAvatar()}>Valider</Button>
+              </View>
+              : <Button radius="10" size="small" style={{ backgroundColor: '#ccc' }} onPress={() => setModifyAvatar(!isModifyAvatar)}>Modifier</Button>}
           </View>
           <View style={styles.mode}>
-            <Mode navigation={props.navigation} sound={sound} />
+            {isModifyAvatar
+              ? <PersonalizeAvatar avatarProps={avatarProps} setAvatarProps={setAvatarProps} />
+              : <Mode avatarProps={avatarProps} navigation={props.navigation} sound={sound} />}
           </View>
         </View>
-        <View style={{ width: '100%' }}>
+        <View style={{ width: '100%', position: "absolute", bottom: 0 }}>
           <FontAwesome5
             name="users"
             size={40}
             color="green"
-            style={{ marginLeft: '1%' }}
+            style={{ margin: '3%' }}
             onPress={() => setOpenModal(true)}
           />
         </View>
       </ImageBackground>
-      <TypeRoom visible={openModal} closeModal={setOpenModal} navigation={props.navigation} sound={sound}></TypeRoom>
+      <TypeRoom visible={openModal} closeModal={setOpenModal} navigation={props.navigation} sound={sound} ></TypeRoom>
+
     </View>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-  },
-  content: {
-    flexDirection: 'row',
-    alignContent: 'center',
-  },
-  avatar: {
-    width: '40%',
-    alignItems: 'center',
-  },
-  viewIconUser: {
-    width: '100',
-  },
-  mode: {
-    width: '40%',
-    alignItems: 'center',
-    backgroundColor: '#ccc',
-    justifyContent: 'space-between',
-    borderRadius: 10,
-    padding: 10,
-    borderRadius: 10,
-    borderColor: '#ccc',
-  },
-  image: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
-    alignContent: 'center',
-    alignItems: 'center',
-  },
-})
+
 
 export default Home

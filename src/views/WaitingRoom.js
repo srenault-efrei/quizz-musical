@@ -13,7 +13,7 @@ const WaitingRoom = (props) => {
   const [animation, setAnimation] = React.useState('')
   const { indexMode } = props.route.params
   const { sound } = props.route.params
-
+  const { avatarProps } = props.route.params
   React.useEffect(() => {
     getSongs()
     if (props.route.params.code) {
@@ -42,7 +42,7 @@ const WaitingRoom = (props) => {
   }
 
   const goToRoom = () => {
-    props.navigation.navigate('Room', { listSongs, indexMode, sound: sound })
+    props.navigation.navigate('Room', { listSongs, indexMode, sound: sound, avatarProps })
   }
 
   const onShare = async () => {
@@ -79,21 +79,21 @@ const WaitingRoom = (props) => {
         }}
       >
         <Animatable.View animation="bounce" iterationCount={500} duration={1000}>
-          <Avatar hairColor="blue" size={200} />
+          <Avatar avatarProps={avatarProps} />
           <Text style={styles.name}>Steven</Text>
         </Animatable.View>
         <Animatable.View animation="bounce" iterationCount={500} duration={1500}>
-          <Avatar hairColor="white" size={200} />
+          <Avatar avatarProps={avatarProps} />
           <Text style={styles.name}>Josias</Text>
         </Animatable.View>
 
         <Animatable.View animation="bounce" iterationCount={500} duration={2000}>
-          <Avatar hairColor="black" size={200} />
+          <Avatar avatarProps={avatarProps} />
           <Text style={styles.name}>Maxime</Text>
         </Animatable.View>
 
         <Animatable.View animation="bounce" iterationCount={500} duration={2500}>
-          <Avatar hairColor="brown" size={200} />
+          <Avatar avatarProps={avatarProps} />
           <Text style={styles.name}>Fabian</Text>
         </Animatable.View>
       </Animatable.View>

@@ -12,7 +12,7 @@ const Mode = (props) => {
     }
     setIndexMode(indexMode)
     // await playSound()
-    props.navigation.navigate('WaitingRoom', { indexMode, sound: props.sound })
+    props.navigation.navigate('WaitingRoom', { indexMode, sound: props.sound, avatarProps: props.avatarProps })
   }
 
   return (

@@ -12,6 +12,7 @@ const Room = (props) => {
   const sound = props.route.params.sound
   const listSongs = props.route.params.listSongs
   const [openMoal, setOpenModal] = React.useState(false)
+  const { avatarProps } = props.route.params
 
   let compteur = 4
   const [numberTitle, setNumberTitle] = React.useState(0)
@@ -86,21 +87,21 @@ const Room = (props) => {
 
             <View style={styles.viewAvatar}>
               <Animatable.View animation="" iterationCount={500} duration={1000}>
-                <Avatar hairColor="blue" size={200} />
+                <Avatar avatarProps={avatarProps} />
                 <Text style={styles.name}>Steven</Text>
               </Animatable.View>
               <Animatable.View animation="" iterationCount={500} duration={1500}>
-                <Avatar hairColor="white" size={200} />
+                <Avatar avatarProps={avatarProps} />
                 <Text style={styles.name}>Josias</Text>
               </Animatable.View>
 
               <Animatable.View animation="" iterationCount={500} duration={2000}>
-                <Avatar hairColor="black" size={200} />
+                <Avatar avatarProps={avatarProps} />
                 <Text style={styles.name}>Maxime</Text>
               </Animatable.View>
 
               <Animatable.View animation="" iterationCount={500} duration={2500}>
-                <Avatar hairColor="brown" size={200} />
+                <Avatar avatarProps={avatarProps} />
                 <Text style={styles.name}>Fabian</Text>
               </Animatable.View>
             </View>

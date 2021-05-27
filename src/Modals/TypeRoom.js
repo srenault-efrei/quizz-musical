@@ -6,67 +6,69 @@ import JoinCodeRoom from './JoinCodeRoom'
 import ChooseMode from './ChooseMode'
 
 const TypeRoom = (props) => {
-  const [openJoinCode, setJoinCode] = React.useState(false)
-  const [openChooseModeModal, setOpenChooseModeModal] = React.useState(false)
+    const [openJoinCode, setJoinCode] = React.useState(false)
+    const [openChooseModeModal, setOpenChooseModeModal] = React.useState(false)
 
-  return (
-    <Modal animationType="fade" transparent={true} visible={props.visible} supportedOrientations={['landscape']}>
-      <View>
-        <View style={styles.modalView}>
-          <Button
-            size={'small'}
-            color={'green'}
-            onPress={() => {
-              setOpenChooseModeModal(true)
-            }}
-          >
-            Créer une partie personnalisé
+    return (
+        <Modal animationType="fade" transparent={true} visible={props.visible} supportedOrientations={['landscape']}>
+            <View>
+                <View style={styles.modalView}>
+                    <Button
+                        size='large'
+                        color={'green'}
+                        onPress={() => {
+                            setOpenChooseModeModal(true)
+                        }}
+                    >
+                        Créer une partie personnalisé
           </Button>
-          <Button size={'small'} color={'green'} onPress={() => setJoinCode(true)}>
-            Rejoindre une partie
+                    <Button size='large' color={'green'} onPress={() => setJoinCode(true)}>
+                        Rejoindre une partie
           </Button>
-          <Button color="red" size={'small'} onPress={() => props.closeModal(false)}>
-            Fermer
+                    <Button color="red" size='large' onPress={() => props.closeModal(false)}>
+                        Fermer
           </Button>
-        </View>
-      </View>
+                </View>
+            </View>
 
-      <JoinCodeRoom
-        visible={openJoinCode}
-        navigation={props.navigation}
-        closeModal={setJoinCode}
-        closeTypeRoom={props.closeModal}
-        sound={props.sound}
-      ></JoinCodeRoom>
+            <JoinCodeRoom
+                visible={openJoinCode}
+                navigation={props.navigation}
+                closeModal={setJoinCode}
+                closeTypeRoom={props.closeModal}
+                sound={props.sound}
+                avatarProps={props.avatarProps}
+            ></JoinCodeRoom>
 
-      <ChooseMode
-        visible={openChooseModeModal}
-        navigation={props.navigation}
-        sound={props.sound}
-        closeModal={setOpenChooseModeModal}
-        closeTypeRoom={props.closeModal}
-      ></ChooseMode>
-    </Modal>
-  )
+            <ChooseMode
+                visible={openChooseModeModal}
+                navigation={props.navigation}
+                sound={props.sound}
+                closeModal={setOpenChooseModeModal}
+                closeTypeRoom={props.closeModal}
+                avatarProps={props.avatarProps}
+            ></ChooseMode>
+        </Modal>
+    )
 }
 
 const styles = StyleSheet.create({
-  modalView: {
-    flexDirection: 'column',
-    margin: '10%',
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
+    modalView: {
+        flexDirection: 'column',
+        margin: '10%',
+        backgroundColor: 'white',
+        borderRadius: 20,
+        padding: 35,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 1.25,
+        shadowRadius: 4,
+        elevation: 5,
     },
-    shadowOpacity: 1.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
 })
 
 export default TypeRoom
