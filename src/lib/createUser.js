@@ -1,6 +1,6 @@
 import socket from "./socket";
 
-const createUser = (username: string) => {
+const createUser = (username) => {
   socket.emit("createUser", { username });
 };
 

@@ -4,7 +4,8 @@ import Avatar from "../components/Avatar";
 import Mode from "../components/Mode";
 import { Audio } from "expo-av";
 import * as Animatable from "react-native-animatable";
-/* import createUser from "../lib/createUser"; */
+import createUser from "../lib/createUser";
+import socket from "../lib/socket";
 
 const Home = (props) => {
   const [sound, setSound] = React.useState();
@@ -23,6 +24,10 @@ const Home = (props) => {
 
   React.useEffect(() => {
     playSound();
+    /* createUser("Josias"); */
+    socket.on("userCreated", function (msg) {
+      console.log(msg);
+    });
   }, []);
 
   return (

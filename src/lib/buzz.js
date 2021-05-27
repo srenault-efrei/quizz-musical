@@ -1,6 +1,6 @@
 import socket from "./socket";
 
-const buzz = (username: string, gameId: string) => {
+const buzz = (username, gameId) => {
   socket.emit("buzz", { username, gameId });
 };
 

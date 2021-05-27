@@ -1,6 +1,6 @@
 import socket from "./socket";
 
-const startGame = (user_uuid: string, gameId: string) => {
+const startGame = (user_uuid, gameId) => {
   socket.emit("start", { user_uuid, gameId });
 };
 

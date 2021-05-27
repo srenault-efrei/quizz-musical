@@ -1,6 +1,6 @@
 import socket from "./socket";
 
-const eliminateUser = (username: string, gameId: string) => {
+const eliminateUser = (username, gameId) => {
   socket.emit("eliminate", { username, gameId });
 };
 

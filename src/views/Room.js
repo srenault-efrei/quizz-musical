@@ -69,7 +69,7 @@ const Room = (props) => {
   };
 
   const nextSong = (title) => {
-    title[0].toUpperCase();
+    title && title[0].toUpperCase();
     console.log("Titre a trouvé", listSongs[numberTitle].name);
     if (listSongs[numberTitle].name.includes(title)) {
       setNumberTitle(numberTitle + 1);
