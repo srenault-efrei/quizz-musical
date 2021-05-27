@@ -14,7 +14,8 @@ const TypeRoom = (props) => {
             <View>
                 <View style={styles.modalView}>
                     <Button
-                        size='large'
+
+                        style={{ width: "80%" }}
                         color={'green'}
                         onPress={() => {
                             setOpenChooseModeModal(true)
@@ -22,10 +23,10 @@ const TypeRoom = (props) => {
                     >
                         Créer une partie personnalisé
           </Button>
-                    <Button size='large' color={'green'} onPress={() => setJoinCode(true)}>
+                    <Button style={{ width: "80%" }} color={'green'} onPress={() => setJoinCode(true)}>
                         Rejoindre une partie
           </Button>
-                    <Button color="red" size='large' onPress={() => props.closeModal(false)}>
+                    <Button color="red" style={{ width: "80%" }} onPress={() => props.closeModal(false)}>
                         Fermer
           </Button>
                 </View>
@@ -38,6 +39,7 @@ const TypeRoom = (props) => {
                 closeTypeRoom={props.closeModal}
                 sound={props.sound}
                 avatarProps={props.avatarProps}
+                avatarName={props.avatarName}
             ></JoinCodeRoom>
 
             <ChooseMode
@@ -47,6 +49,7 @@ const TypeRoom = (props) => {
                 closeModal={setOpenChooseModeModal}
                 closeTypeRoom={props.closeModal}
                 avatarProps={props.avatarProps}
+                avatarName={props.avatarName}
             ></ChooseMode>
         </Modal>
     )

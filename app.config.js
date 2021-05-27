@@ -7,4 +7,7 @@ export default {
     extra: {
         keyNapster: process.env.NAPSTER_KEY,
     },
+    androidNavigationBar: {
+        "visible": "sticky-immersive",
+    }
 };

@@ -4,7 +4,6 @@ import Avatar from '../components/Avatar'
 import Mode from '../components/Mode'
 import { Audio } from 'expo-av'
 import * as Animatable from 'react-native-animatable'
-import createUser from '../lib/createUser'
 import createGame from '../lib/createGame'
 import joinPublicParty from '../lib/joinPublicParty'
 import joinPrivateParty from '../lib/joinPrivateParty'
@@ -25,9 +24,12 @@ const Home = (props) => {
   const [avatarName, setAvatarName] = React.useState('Anonymous')
   const [isModifyAvatar, setModifyAvatar] = React.useState(false)
 
+  const [text, setText] = React.useState("")
+
   const image = {
     uri: 'https://img.pixers.pics/pho_wat(s3:700/FO/64/91/41/38/700_FO64914138_bc4676ea52e53b3a655d1beeadca1e88.jpg,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/papiers-peints-fond-musical-colore.jpg.jpg',
   }
+
 
   const playSound = async () => {
     const { sound } = await Audio.Sound.createAsync(require('../../assets/songs/home.mp3'))
@@ -71,8 +73,7 @@ const Home = (props) => {
     getAvatarStorage()
     playSound();
     /* createUser("Maxime"); */
-    /*   createUser("Josias"); */
-    /*   createUser("Fabian"); */
+    // createUser("Fabian");
     /* createGame("05176003-8254-4921-aa94-f256bbc1a2d4", 2, true); */
     /* joinPublicParty("Josias", "c35ea4d1-69e0-4961-8347-c282ce471564", 2); */
     /* createGame("37171949-e481-4e39-b1b7-de05775bfbb8", 2, true); */
@@ -143,28 +144,28 @@ const Home = (props) => {
 
             {isModifyAvatar
               ? <View style={{ flexDirection: 'row' }}>
-                <Button radius="10" size="small" color="#ccc" onPress={() => cancelModifyAvatar()}>Annuler</Button>
-                <Button radius="10" size="small" color="success" onPress={() => validModifyAvatar()}>Valider</Button>
+                <Button radius="10" style={{ width: "40%" }} color="#ccc" onPress={() => cancelModifyAvatar()}>Annuler</Button>
+                <Button radius="10" style={{ width: "40%" }} color="success" onPress={() => validModifyAvatar()}>Valider</Button>
               </View>
-              : <Button radius="10" size="small" style={{ backgroundColor: '#ccc' }} onPress={() => setModifyAvatar(!isModifyAvatar)}>Modifier</Button>}
+              : <Button radius="10" size='small' style={{ backgroundColor: '#ccc' }} onPress={() => setModifyAvatar(!isModifyAvatar)}>Modifier</Button>}
           </View>
           <View style={styles.mode}>
             {isModifyAvatar
               ? <PersonalizeAvatar avatarProps={avatarProps} setAvatarProps={setAvatarProps} />
-              : <Mode avatarProps={avatarProps} navigation={props.navigation} sound={sound} />}
+              : <Mode avatarProps={avatarProps} navigation={props.navigation} sound={sound} avatarName={avatarName} />}
           </View>
         </View>
-        <View style={{ width: '100%', position: "absolute", bottom: 0 }}>
+        <View style={{ left: 0, position: "absolute", bottom: 0 }}>
           <FontAwesome5
             name="users"
             size={40}
             color="green"
-            style={{ margin: '3%' }}
+            style={{ margin: '1%', marginLeft: "9%" }}
             onPress={() => setOpenModal(true)}
           />
         </View>
       </ImageBackground>
-      <TypeRoom visible={openModal} closeModal={setOpenModal} navigation={props.navigation} sound={sound} ></TypeRoom>
+      <TypeRoom visible={openModal} closeModal={setOpenModal} navigation={props.navigation} sound={sound} avatarName={avatarName} avatarProps={avatarProps} ></TypeRoom>
 
     </View>
   )

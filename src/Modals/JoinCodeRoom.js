@@ -2,12 +2,14 @@ import * as React from 'react'
 
 import { Modal, StyleSheet, View, Alert } from 'react-native'
 import { Button, Input } from 'galio-framework'
+import createUser from '../lib/createUser'
 
 const JoinCodeRoom = (props) => {
     const [code, setCode] = React.useState('')
 
     const goToWaitingRoom = () => {
         if (code !== '') {
+            createUser(props.avatarName)
             props.navigation.navigate('WaitingRoom', { indexMode: 0, sound: props.sound, code, avatarProps: props.avatarProps }), props.closeModal(false)
             props.closeTypeRoom(false)
         } else {
@@ -31,7 +33,7 @@ const JoinCodeRoom = (props) => {
 
                     {/* en fonction du code je dois retrouver le indexMode la c en dure */}
                     <Button
-                        size='large'
+                        style={{ width: "80%" }}
                         color={'green'}
                         onPress={() => {
                             goToWaitingRoom()
@@ -39,7 +41,7 @@ const JoinCodeRoom = (props) => {
                     >
                         Valider
           </Button>
-                    <Button color="red" size='large' onPress={() => props.closeModal(false)}>
+                    <Button color="red" style={{ width: "80%" }} onPress={() => props.closeModal(false)}>
                         Fermer
           </Button>
                 </View>

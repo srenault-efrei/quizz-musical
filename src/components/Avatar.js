@@ -3,7 +3,6 @@ import { BigHead } from 'react-native-bigheads'
 
 const Avatar = (props) => {
     const { avatarProps } = props
-
     return (
         <BigHead
             accessory={avatarProps.accessory}

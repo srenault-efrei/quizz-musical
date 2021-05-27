@@ -17,26 +17,26 @@ const colors = {
 }
 
 export const avatarPropsInit = {
-    accessory: "none",
-    bgColor: "blue",
+    accessory: "shades",
+    bgColor: "white",
     bgShape: "circle",
     body: "chest",
-    clothing: "shirt",
-    clothingColor: "white",
-    eyebrows: "leftLowered",
-    eyes: "normal",
-    facialHair: "none",
-    graphic: "react",
-    hair: "none",
-    hairColor: "blue",
-    hat: "party",
+    clothing: "tankTop",
+    clothingColor: "black",
+    eyebrows: "angry",
+    eyes: "wink",
+    facialHair: "mediumBeard",
+    graphic: "vue",
+    hair: "short",
+    hairColor: "white",
+    hat: "none",
     hatColor: "green",
     lashes: false,
     lipColor: "purple",
     mouth: "open",
-    showBackground: false,
+    showBackground: true,
     size: 200,
-    skinTone: "brown"
+    skinTone: "brown",
 }
 
 export const avatarPropsList = [
