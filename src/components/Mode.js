@@ -1,21 +1,34 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, Image, TouchableOpacity, LogBox } from 'react-native'
-import createUser from '../lib/createUser'
+import joinPublicParty from '../lib/joinPublicParty'
+import socket from '../lib/socket'
 
 LogBox.ignoreLogs(['Non-serializable values were found in the navigation state'])
 
 const Mode = (props) => {
   const [indexMode, setIndexMode] = useState()
-  console.log("name ", props.avatarName)
+  const [gameID, setGameID] = useState()
+  console.log('name ', props.avatarName)
 
   const handlePress = async (indexMode, props) => {
     if (props.closeAllModal) {
       props.closeAllModal()
     }
-    createUser(props.avatarName)
     setIndexMode(indexMode)
+    /* console.log(props.avatarName, props.uuid, indexMode) */
+    socket.once('userJoined', function (msg) {
+      if (msg.error) console.log(msg.error)
+      else setGameID(msg.gameID)
+    })
+    joinPublicParty(props.avatarName, props.uuid, indexMode)
     // await playSound()
-    props.navigation.navigate('WaitingRoom', { indexMode, sound: props.sound, avatarProps: props.avatarProps })
+    props.navigation.navigate('WaitingRoom', {
+      indexMode,
+      sound: props.sound,
+      avatarProps: props.avatarProps,
+      gameID,
+      uuid: props.uuid,
+    })
   }
 
   return (

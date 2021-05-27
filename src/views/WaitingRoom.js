@@ -6,6 +6,7 @@ import { AntDesign } from '@expo/vector-icons'
 import { Button } from 'galio-framework'
 import Avatar from '../components/Avatar'
 import * as Animatable from 'react-native-animatable'
+import socket from '../lib/socket'
 
 const WaitingRoom = (props) => {
   const [listSongs, setListSongs] = React.useState()
@@ -21,6 +22,9 @@ const WaitingRoom = (props) => {
     } else {
       setCode('NomDuSAlon-DSDLXSDSDL')
     }
+    socket.once('start', function (msg) {
+      console.log(msg)
+    })
   }, [])
 
   const getSongs = async () => {
@@ -103,6 +107,7 @@ const WaitingRoom = (props) => {
           size="large"
           color="success"
           onPress={() => {
+            startGame(props.uuid, props.gameID)
             setAnimation('tada'), sound.unloadAsync()
           }}
         >
