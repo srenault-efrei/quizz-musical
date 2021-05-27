@@ -1,7 +1,7 @@
-import socket from "./socket";
+import socket from './socket'
 
 const buzz = (username, gameId) => {
-  socket.emit("buzz", { username, gameId });
-};
+  socket.emit('buzz', { username, gameId })
+}
 
-export default buzz;
+export default buzz

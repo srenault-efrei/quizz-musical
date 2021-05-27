@@ -1,9 +1,9 @@
-import io from "socket.io-client";
+import io from 'socket.io-client'
 
-const socket = io(process.env.ENDPOINT, {
+const socket = io('https://quizz-musical-back.herokuapp.com', {
   extraHeaders: {
-    "my-custom-header": "abcd",
+    'my-custom-header': 'abcd',
   },
-});
+})
 
-export default socket;
+export default socket

@@ -1,7 +1,7 @@
-import socket from "./socket";
+import socket from './socket'
 
 const createUser = (username) => {
-  socket.emit("createUser", { username });
-};
+  socket.emit('createUser', { username })
+}
 
-export default createUser;
+export default createUser
