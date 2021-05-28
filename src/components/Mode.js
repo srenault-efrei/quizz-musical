@@ -1,25 +1,33 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, Image, TouchableOpacity, LogBox } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { StyleSheet, Text, Image, TouchableOpacity, LogBox, Alert } from 'react-native'
+import createGame from '../lib/createGame'
 import joinPublicParty from '../lib/joinPublicParty'
 import socket from '../lib/socket'
 
 LogBox.ignoreLogs(['Non-serializable values were found in the navigation state'])
 
 const Mode = (props) => {
-  const [indexMode, setIndexMode] = useState()
+  // const [indexMode, setIndexMode] = useState()
   const [gameID, setGameID] = useState()
-  console.log('name ', props.avatarName)
 
+  React.useEffect(() => {
+    socket.once('userJoined', function (msg) {
+      if (msg.error) Alert.alert(msg.error)
+      else {
+        setGameID(msg.gameID)
+
+      }
+    })
+  }, [])
   const handlePress = async (indexMode, props) => {
+    console.log(props.uuid)
     if (props.closeAllModal) {
       props.closeAllModal()
     }
-    setIndexMode(indexMode)
-    /* console.log(props.avatarName, props.uuid, indexMode) */
-    socket.once('userJoined', function (msg) {
-      if (msg.error) console.log(msg.error)
-      else setGameID(msg.gameID)
-    })
+    if (props.isPrivate !== undefined) {
+      createGame(props.uuid, indexMode, props.isPrivate)
+    }
+
     joinPublicParty(props.avatarName, props.uuid, indexMode)
     // await playSound()
     props.navigation.navigate('WaitingRoom', {

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { View, ImageBackground, Text } from 'react-native'
+import { View, ImageBackground, Text, Alert } from 'react-native'
 import Avatar from '../components/Avatar'
 import Mode from '../components/Mode'
 import { Audio } from 'expo-av'
@@ -82,7 +82,7 @@ const Home = (props) => {
     /* joinPrivateParty('487ad05e-2ae5-4fa5-a9f6-1670eaa69096', 'Test', '0128a7ce-eb9b-4584-bdb8-5514588b929e') */
 
     socket.once('userCreated', function (msg) {
-      if (msg.error) console.log(msg.erro)
+      if (msg.error) Alert.alert(msg.error)
       else setUuid(msg.data.uuid)
     })
     socket.once('gameCreated', function (msg) {
