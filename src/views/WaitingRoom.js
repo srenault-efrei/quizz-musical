@@ -10,19 +10,13 @@ import socket from '../lib/socket'
 
 const WaitingRoom = (props) => {
   const [listSongs, setListSongs] = React.useState()
-  const [code, setCode] = React.useState()
   const [animation, setAnimation] = React.useState('')
-  const { indexMode } = props.route.params
-  const { sound } = props.route.params
-  const { avatarProps } = props.route.params
+  const { indexMode, sound, avatarProps, avatarName, uuid } = props.route.params
   const [users, setUsers] = React.useState([])
+  const code = props.route.params.code ? props.route.params.code : 'NomDuSAlon-DSDLXSDSDL'
+
   React.useEffect(() => {
     getSongs()
-    if (props.route.params.code) {
-      setCode(props.route.params.code)
-    } else {
-      setCode('NomDuSAlon-DSDLXSDSDL')
-    }
     socket.once('start', function (msg) {
       console.log(msg)
     })
@@ -78,7 +72,7 @@ const WaitingRoom = (props) => {
         </Button>
       </View>
 
-      <Text style={styles.members}>Membres 4/4</Text>
+      <Text style={styles.members}>Membres {1 + users.length}/4</Text>
 
       <Animatable.View
         animation={animation}
@@ -87,6 +81,10 @@ const WaitingRoom = (props) => {
           endState.finished && goToRoom()
         }}
       >
+        <Animatable.View animation="bounce" iterationCount={500} duration={1000}>
+          <Avatar avatarProps={avatarProps} />
+          <Text style={styles.name}>{avatarName}</Text>
+        </Animatable.View>
         {users.map(({ username, avatar }, index) => (
           <Animatable.View key={index} animation="bounce" iterationCount={500} duration={1000}>
             <Avatar avatarProps={avatar} />

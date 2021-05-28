@@ -15,8 +15,21 @@ const ChooseMode = (props) => {
     <Modal animationType="fade" transparent={true} visible={props.visible} supportedOrientations={['landscape']}>
       <View>
         <View style={styles.modalView}>
-          <Mode navigation={props.navigation} avatarProps={props.avatarProps} sound={props.sound} closeAllModal={closeAllModal} avatarName={props.avatarName} isPrivate={props.isPrivate} uuid={props.uuid} />
-          <Button color="red" style={{ width: "80%" }} onPress={() => props.closeModal(false)} style={{ marginTop: '2%' }}>
+          <Mode
+            navigation={props.navigation}
+            avatarProps={props.avatarProps}
+            sound={props.sound}
+            closeAllModal={closeAllModal}
+            avatarName={props.avatarName}
+            isPrivate={props.isPrivate}
+            uuid={props.uuid}
+          />
+          <Button
+            color="red"
+            style={{ width: '80%' }}
+            onPress={() => props.closeModal(false)}
+            style={{ marginTop: '2%' }}
+          >
             Fermer
           </Button>
         </View>

@@ -7,36 +7,38 @@ import socket from '../lib/socket'
 LogBox.ignoreLogs(['Non-serializable values were found in the navigation state'])
 
 const Mode = (props) => {
-  // const [indexMode, setIndexMode] = useState()
-  const [gameID, setGameID] = useState()
-
-  React.useEffect(() => {
-    socket.once('userJoined', function (msg) {
-      if (msg.error) Alert.alert(msg.error)
-      else {
-        setGameID(msg.gameID)
-
-      }
+  const goToWaitingRoom = (indexMode, gameID) => {
+    props.navigation.navigate('WaitingRoom', {
+      indexMode,
+      sound: props.sound,
+      avatarProps: props.avatarProps,
+      code: gameID,
+      uuid: props.uuid,
+      avatarName: props.avatarName,
     })
-  }, [])
+  }
+
   const handlePress = async (indexMode, props) => {
-    console.log(props.uuid)
     if (props.closeAllModal) {
       props.closeAllModal()
     }
     if (props.isPrivate !== undefined) {
       createGame(props.uuid, indexMode, props.isPrivate)
+      socket.once('gameCreated', function (msg) {
+        if (msg.error) Alert.alert(msg.error)
+        else {
+          goToWaitingRoom(indexMode, msg.id)
+        }
+      })
+    } else {
+      joinPublicParty(props.avatarName, props.uuid, indexMode)
+      socket.once('userJoined', function (msg) {
+        if (msg.error) Alert.alert(msg.error)
+        else {
+          goToWaitingRoom(indexMode, msg.id)
+        }
+      })
     }
-
-    joinPublicParty(props.avatarName, props.uuid, indexMode)
-    // await playSound()
-    props.navigation.navigate('WaitingRoom', {
-      indexMode,
-      sound: props.sound,
-      avatarProps: props.avatarProps,
-      gameID,
-      uuid: props.uuid,
-    })
   }
 
   return (

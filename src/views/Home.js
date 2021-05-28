@@ -90,9 +90,6 @@ const Home = (props) => {
       if (msg.error) Alert.alert(msg.error)
       else setUuid(msg.data.uuid)
     })
-    socket.once('gameCreated', function (msg) {
-      console.log(msg)
-    })
     /* socket.once('userJoined', function (msg) {
       console.log(msg)
     }) */
@@ -121,6 +118,9 @@ const Home = (props) => {
   validModifyAvatar = () => {
     storeAvatar()
     setModifyAvatar(!isModifyAvatar)
+    /* if(!hasLocalstorage) {
+      createUser(avatarName, avatarProps)
+    } */
     createUser(avatarName, avatarProps)
   }
 
