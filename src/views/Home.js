@@ -66,6 +66,12 @@ const Home = (props) => {
           avatarName,
         })
       )
+      await AsyncStorage.setItem(
+        'uuid',
+        JSON.stringify({
+          uuid,
+        })
+      )
     } catch (error) {
       console.log('Local storage data Error : ', error)
     }
@@ -75,7 +81,6 @@ const Home = (props) => {
     getAvatarStorage()
     playSound()
     /* createUser('Maxime') */
-    // createUser("Fabian");
     /* createGame('1b85aff7-d73c-4036-915b-8e3af4734d0a', 2, false) */
     /* joinPublicParty("Josias", "c35ea4d1-69e0-4961-8347-c282ce471564", 2); */
     /* createGame("37171949-e481-4e39-b1b7-de05775bfbb8", 2, true); */
@@ -116,7 +121,7 @@ const Home = (props) => {
   validModifyAvatar = () => {
     storeAvatar()
     setModifyAvatar(!isModifyAvatar)
-    createUser(avatarName)
+    createUser(avatarName, avatarProps)
   }
 
   return (

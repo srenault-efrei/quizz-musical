@@ -15,6 +15,7 @@ const WaitingRoom = (props) => {
   const { indexMode } = props.route.params
   const { sound } = props.route.params
   const { avatarProps } = props.route.params
+  const [users, setUsers] = React.useState([])
   React.useEffect(() => {
     getSongs()
     if (props.route.params.code) {
@@ -24,6 +25,10 @@ const WaitingRoom = (props) => {
     }
     socket.once('start', function (msg) {
       console.log(msg)
+    })
+    socket.once('userJoined', function (msg) {
+      if (msg.error) console.log(msg.error)
+      else setUsers([...users, msg])
     })
   }, [])
 
@@ -82,24 +87,12 @@ const WaitingRoom = (props) => {
           endState.finished && goToRoom()
         }}
       >
-        <Animatable.View animation="bounce" iterationCount={500} duration={1000}>
-          <Avatar avatarProps={avatarProps} />
-          <Text style={styles.name}>Steven</Text>
-        </Animatable.View>
-        <Animatable.View animation="bounce" iterationCount={500} duration={1500}>
-          <Avatar avatarProps={avatarProps} />
-          <Text style={styles.name}>Josias</Text>
-        </Animatable.View>
-
-        <Animatable.View animation="bounce" iterationCount={500} duration={2000}>
-          <Avatar avatarProps={avatarProps} />
-          <Text style={styles.name}>Maxime</Text>
-        </Animatable.View>
-
-        <Animatable.View animation="bounce" iterationCount={500} duration={2500}>
-          <Avatar avatarProps={avatarProps} />
-          <Text style={styles.name}>Fabian</Text>
-        </Animatable.View>
+        {users.map(({ username, avatar }, index) => (
+          <Animatable.View key={index} animation="bounce" iterationCount={500} duration={1000}>
+            <Avatar avatarProps={avatar} />
+            <Text style={styles.name}>{username}</Text>
+          </Animatable.View>
+        ))}
       </Animatable.View>
 
       <View style={styles.footer}>

@@ -3,28 +3,24 @@ import * as React from 'react'
 import { Modal, StyleSheet, View, Alert } from 'react-native'
 import { Button, Input } from 'galio-framework'
 
-import socket from '../lib/socket'
-import createUser from '../lib/createUser'
 import joinPrivateParty from '../lib/joinPrivateParty'
 
 const JoinCodeRoom = (props) => {
     const [code, setCode] = React.useState('')
 
-    const goToWaitingRoom = () => {
-        if (code !== '') {
-            /* createUser(props.avatarName) */
-            joinPrivateParty(props.uuid.toString(), props.avatarName.toString(), code.toString())
-            props.navigation.navigate('WaitingRoom', {
-                indexMode: 0,
-                sound: props.sound,
-                code,
-                avatarProps: props.avatarProps,
-            }),
-                props.closeModal(false)
-            props.closeTypeRoom(false)
-        } else {
-            Alert.alert('Vous devez rentrer un code')
-        }
+  const goToWaitingRoom = () => {
+    if (code !== '') {
+      joinPrivateParty(props.uuid.toString(), props.avatarName.toString(), code.toString())
+      props.navigation.navigate('WaitingRoom', {
+        indexMode: 0,
+        sound: props.sound,
+        code,
+        avatarProps: props.avatarProps,
+      }),
+        props.closeModal(false)
+      props.closeTypeRoom(false)
+    } else {
+      Alert.alert('Vous devez rentrer un code')
     }
 
     return (
