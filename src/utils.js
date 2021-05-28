@@ -238,8 +238,8 @@ export const avatarPropsList = [
         label: 'lashes',
         type: 'boolean',
         booleanLabels: {
-            true: 'true',
-            false: 'false'
+            true: translatedValues.lashes.selectors.true,
+            false: translatedValues.lashes.selectors.false
         },
         selectors: [
             { key: 1, label: translatedValues.lashes.selectors.true, value: true, component: (<Text style={styles.textSelector}>{translatedValues.lashes.selectors.true}</Text>) },
@@ -286,7 +286,7 @@ export const avatarPropsList = [
         label: 'mouth',
         type: 'strings',
         selectors: [
-            { key: 1, label: translatedValues.mouth.selectors.grin, value: 'grin', component: (<Text style={styles.textSelector}>{translatedValues.mouth.selectors.selectors.grin}</Text>) },
+            { key: 1, label: translatedValues.mouth.selectors.grin, value: 'grin', component: (<Text style={styles.textSelector}>{translatedValues.mouth.selectors.grin}</Text>) },
             { key: 2, label: translatedValues.mouth.selectors.sad, value: 'sad', component: (<Text style={styles.textSelector}>{translatedValues.mouth.selectors.sad}</Text>) },
             { key: 3, label: translatedValues.mouth.selectors.openSmile, value: 'openSmile', component: (<Text style={styles.textSelector}>{translatedValues.mouth.selectors.openSmile}</Text>) },
             { key: 4, label: translatedValues.mouth.selectors.lips, value: 'lips', component: (<Text style={styles.textSelector}>{translatedValues.mouth.selectors.lips}</Text>) },

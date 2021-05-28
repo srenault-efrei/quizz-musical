@@ -19,7 +19,7 @@ const Avatar = (props) => {
         return avatarPropsList.map((avatarProp, key) => {
             return (
                 <View key={key} style={styles.avatarPropView}>
-                    <Text style={styles.propTitle}>{translatedValues[avatarProp.name]['title']} : </Text>
+                    <Text style={styles.propTitle}>{translatedValues[avatarProp.label].title} : </Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <ModalSelector
                             data={avatarProp.selectors}
@@ -29,14 +29,14 @@ const Avatar = (props) => {
                                 styles.propValueView,
                                 {backgroundColor: avatarProp.type === 'colors' ? colors[avatarProp.label][avatarProps[avatarProp.label]] : 'white'}]}>
                                 <Icon name="pencil" size={18} />
-                                <Text style={styles.propValueText}>
+                                <Text style={styles.propValueText} numberOfLines={1} ellipsizeMode='tail'>
                                     {avatarProp.type === 'boolean'
                                         ? avatarProps[avatarProp.label]
                                             ? avatarProp.booleanLabels?.true
                                             : avatarProp.booleanLabels?.false
                                         : avatarProp.type === 'colors'
                                         ? null
-                                        : avatarProps[avatarProp.label]}
+                                        : translatedValues[avatarProp.label]['selectors'][avatarProps[avatarProp.label]]}
                                 </Text>
                             </View>
                         </ModalSelector>
