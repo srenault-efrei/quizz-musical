@@ -7,6 +7,8 @@ import { Button } from 'galio-framework'
 import Avatar from '../components/Avatar'
 import * as Animatable from 'react-native-animatable'
 import socket from '../lib/socket'
+import startGame from '../lib/startGame'
+
 
 const WaitingRoom = (props) => {
   const [listSongs, setListSongs] = React.useState()
@@ -45,7 +47,7 @@ const WaitingRoom = (props) => {
   }
 
   const goToRoom = () => {
-    props.navigation.navigate('Room', { listSongs, indexMode, sound: sound, avatarProps })
+    props.navigation.navigate('Room', { listSongs, indexMode, sound: sound, avatarProps, users })
   }
 
   const onShare = async () => {
@@ -72,7 +74,7 @@ const WaitingRoom = (props) => {
         </Button>
       </View>
 
-      <Text style={styles.members}>Membres {1 + users.length}/4</Text>
+      <Text style={styles.members}>Membres {1 + users.length}/2</Text>
 
       <Animatable.View
         animation={animation}
@@ -98,7 +100,7 @@ const WaitingRoom = (props) => {
           size="large"
           color="success"
           onPress={() => {
-            startGame(props.uuid, props.gameID)
+            startGame(uuid, code)
             setAnimation('tada'), sound.unloadAsync()
           }}
         >

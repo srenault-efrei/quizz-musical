@@ -74,7 +74,7 @@ const Room = (props) => {
           <ImageBackground source={gifs[indexMode]} style={styles.content} resizeMode="stretch">
             <View style={styles.viewTitle}>
               <Button icon="music" iconFamily="Feather" color="red" size="small" capitalize shadowless>
-                TITRE 1/2
+                {`Titre ${numberTitle}/${listSongs.length - 1} `}
               </Button>
             </View>
 
@@ -86,24 +86,12 @@ const Room = (props) => {
             )}
 
             <View style={styles.viewAvatar}>
-              <Animatable.View animation="" iterationCount={500} duration={1000}>
-                <Avatar avatarProps={avatarProps} />
-                <Text style={styles.name}>Steven</Text>
-              </Animatable.View>
-              <Animatable.View animation="" iterationCount={500} duration={1500}>
-                <Avatar avatarProps={avatarProps} />
-                <Text style={styles.name}>Josias</Text>
-              </Animatable.View>
-
-              <Animatable.View animation="" iterationCount={500} duration={2000}>
-                <Avatar avatarProps={avatarProps} />
-                <Text style={styles.name}>Maxime</Text>
-              </Animatable.View>
-
-              <Animatable.View animation="" iterationCount={500} duration={2500}>
-                <Avatar avatarProps={avatarProps} />
-                <Text style={styles.name}>Fabian</Text>
-              </Animatable.View>
+              {props.route.params.users.map(({ username, avatar }, index) => (
+                <Animatable.View key={index} animation="bounce" iterationCount={500} duration={1000}>
+                  <Avatar avatarProps={avatar} />
+                  <Text style={styles.name}>{username}</Text>
+                </Animatable.View>
+              ))}
             </View>
           </ImageBackground>
         ) : (
