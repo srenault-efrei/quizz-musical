@@ -69,6 +69,9 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    textSelector: {
+        textTransform: 'uppercase'
+    },
     avatarNameView: {
         height: 25,
         minWidth: '50%',

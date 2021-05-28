@@ -5,7 +5,7 @@ import ModalSelector from 'react-native-modal-selector'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import styles from '../../assets/styles/styles'
-import { avatarPropsList, colors } from '../utils'
+import { avatarPropsList, colors, translatedValues } from '../utils'
 
 const Avatar = (props) => {
     const { avatarProps, setAvatarProps } = props
@@ -19,7 +19,7 @@ const Avatar = (props) => {
         return avatarPropsList.map((avatarProp, key) => {
             return (
                 <View key={key} style={styles.avatarPropView}>
-                    <Text style={styles.propTitle}>{avatarProp.name} : </Text>
+                    <Text style={styles.propTitle}>{translatedValues[avatarProp.name]['title']} : </Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <ModalSelector
                             data={avatarProp.selectors}

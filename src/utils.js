@@ -3,6 +3,89 @@ import { View, Text } from 'react-native'
 
 import styles from '../assets/styles/styles'
 
+export const translatedValues = {
+    hat: {
+        title: 'chapeau', selectors: {
+            none: 'aucun', beanie: 'bonnet', turban: 'turban', party: 'festif', hijab: 'hijab'
+        }
+    },
+    hatColor: {
+        title: 'couleur chapeau', selectors: {
+            white: 'blanc', blue: 'bleu', black: 'noir', green: 'vert', red: 'rouge'
+        }
+    },
+    hair: {
+        title: 'cheveux', selectors: {
+            none: 'chauve', long: 'longs', bun: 'chignon', short: 'courts', pixie: 'pixie', balding: 'dégarni', buzz: 'buzz', afro: 'afro', bob: 'carré', mohawk: 'mohawk'
+        }
+    },
+    hairColor: {
+        title: 'couleur cheveux', selectors: {
+            blonde: 'blond', orange: 'orange', black: 'noir', white: 'blanc', brown: 'marron', blue: 'bleu', pink: 'rose'
+        }
+    },
+    lashes: {
+        title: 'cils', selectors: {
+            true: 'avec', false: 'sans'
+        }
+    },
+    eyes: {
+        title: 'yeux', selectors: {
+            normal: 'normal', leftTwitch: 'tic gauche', happy: 'heureux', content: 'contenu', squint: 'plissé', simple: 'petit', dizzy: 'malaise', wink: 'clin d\'oeil', hearts: 'coeur', crazy: 'fou', cute: 'mignon', dollars: 'dollars', stars: 'étoile', cyborg: 'cyborg', simplePatch: 'bandeau', piratePatch: 'pirate'
+        }
+    },
+    eyebrows: {
+        title: 'sourcils', selectors: {
+            raised: 'levé', leftLowered: 'gauche baissé', serious: 'sérieux', angry: 'en colère', concerned: 'inquiet'
+        }
+    },
+    mouth: {
+        title: 'bouche', selectors: {
+            grin: 'sourire', sad: 'triste', openSmile: 'sourire ouvert', lips: 'lèvres', open: 'ouverte', serious: 'sérieux', tongue: 'langue', piercedTongue: 'percing langue', vomitingRainbow: 'vomi arc-en-ciel'
+        }
+    },
+    lipColor: {
+        title: 'couleur lèvres', selectors: {
+            red: 'red', purple: 'pourpre', pink: 'rose', turqoise: 'turquoise', green: 'vert'
+        }
+    },
+    facialHair: {
+        title: 'barbe', selectors: {
+            none: 'imberbe', stubble: 'poils', mediumBeard: 'moyenne', goatee: 'bouc'
+        }
+    },
+    accessory: {
+        title: 'accessoires', selectors: {
+            none: 'aucun', roundGlasses: 'lunettes rondes', tinyGlasses: 'petites lunettes', shades: 'lunettes de soleil', faceMask: 'masque', hoopEarrings: 'boucles d\'oreilles'
+        }
+    },
+    skinTone: {
+        title: 'teint peau', selectors: {
+            light: 'clair', yellow: 'jaune', brown: 'marron', dark: 'foncé', red: 'rouge', black: 'noir'
+        }
+    },
+    body: {
+        title: 'corps', selectors: {
+            chest: 'torse', breasts: 'poitrine'
+        }
+    },
+    clothing: {
+        title: 'vêtement', selectors: {
+            naked: 'nu', shirt: 't-shirt', dressShirt: 'chemise', vneck: 't-shirt v', tankTop: 'débardeur', dress: 'robe', denimJacket: 'veste jean', hoodie: 'sweat', chequeredShirt: 'chemise à carreaux', chequeredShirtDark: 'chemise à carreaux sombre'
+        }
+    },
+    clothingColor: {
+        title: 'couleur vêtement', selectors: {
+            white: 'blanc', blue: 'bleu', black: 'noir', green: 'vert', red: 'rouge'
+        }
+    },
+    graphic: {
+        title: 'logo vêtement', selectors: {
+            none: 'aucun', redwood: 'redwood', gatsby: 'gatsby', vue: 'vue', react: 'react', graphQL: 'graphqL', donut: 'donut', rainbow: 'arc-en-ciel'
+        }
+    }
+}
+
 export const colors = {
     clothing: { white: '#FFFFFF', blue: '#85C5E5', black: '#633749', green: '#89D86F', red: '#D67070' },
     hair: { blonde: '#FEDC58', orange: '#D96E27', black: '#592D3D', white: '#FFFFFF', brown: '#A56941', blue: '#85C5E5', pink: '#D69AC7' },
@@ -40,11 +123,11 @@ export const avatarPropsList = [
         label: 'hat',
         type: 'strings',
         selectors: [
-            { key: 1, label: 'none', value: 'none', component: (<Text>none</Text>) },
-            { key: 2, label: 'beanie', value: 'beanie', component: (<Text>beanie</Text>) },
-            { key: 3, label: 'turban', value: 'turban', component: (<Text>turban</Text>) },
-            { key: 4, label: 'party', value: 'party', component: (<Text>party</Text>) },
-            { key: 5, label: 'hijab', value: 'hijab', component: (<Text>hijab</Text>) }
+            { key: 1, label: translatedValues.hat.selectors.none, value: 'none', component: (<Text style={styles.textSelector}>{translatedValues.hat.selectors.none}</Text>) },
+            { key: 2, label: translatedValues.hat.selectors.beanie, value: 'beanie', component: (<Text style={styles.textSelector}>{translatedValues.hat.selectors.beanie}</Text>) },
+            { key: 3, label: translatedValues.hat.selectors.turban, value: 'turban', component: (<Text style={styles.textSelector}>{translatedValues.hat.selectors.turban}</Text>) },
+            { key: 4, label: translatedValues.hat.selectors.party, value: 'party', component: (<Text style={styles.textSelector}>{translatedValues.hat.selectors.party}</Text>) },
+            { key: 5, label: translatedValues.hat.selectors.hijab, value: 'hijab', component: (<Text style={styles.textSelector}>{translatedValues.hat.selectors.hijab}</Text>) }
         ],
         colors: {
             name: 'Hat color',
@@ -52,33 +135,33 @@ export const avatarPropsList = [
             type: 'colors',
             selectors: [
                 {
-                    key: 1, label: 'white', value: 'white', component: (
+                    key: 1, label: translatedValues.hatColor.selectors.white, value: 'white', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.hat.white }]}>
-                            <Text style={{ color: 'black' }}>Blanc</Text>
+                            <Text style={[styles.textSelector, { color: 'black' }]}>{translatedValues.hatColor.selectors.white}</Text>
                         </View>)
                 },
                 {
-                    key: 2, label: 'blue', value: 'blue', component: (
+                    key: 2, label: translatedValues.hatColor.selectors.blue, value: 'blue', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.hat.blue }]}>
-                            <Text style={{ color: 'white' }}>Bleu</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.hatColor.selectors.blue}</Text>
                         </View>)
                 },
                 {
-                    key: 3, label: 'black', value: 'black', component: (
+                    key: 3, label: translatedValues.hatColor.selectors.black, value: 'black', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.hat.black }]}>
-                            <Text style={{ color: 'white' }}>Noir</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.hatColor.selectors.black}</Text>
                         </View>)
                 },
                 {
-                    key: 4, label: 'green', value: 'green', component: (
+                    key: 4, label: translatedValues.hatColor.selectors.green, value: 'green', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.hat.green }]}>
-                            <Text style={{ color: 'white' }}>Vert</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.hatColor.selectors.green}</Text>
                         </View>)
                 },
                 {
-                    key: 5, label: 'red', value: 'red', component: (
+                    key: 5, label: translatedValues.hatColor.selectors.red, value: 'red', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.hat.red }]}>
-                            <Text style={{ color: 'white' }}>Rouge</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.hatColor.selectors.red}</Text>
                         </View>)
                 }
             ]
@@ -89,16 +172,16 @@ export const avatarPropsList = [
         label: 'hair',
         type: 'strings',
         selectors: [
-            { key: 1, label: 'none', value: 'none', component: (<Text>none</Text>) },
-            { key: 2, label: 'long', value: 'long', component: (<Text>long</Text>) },
-            { key: 3, label: 'bun', value: 'bun', component: (<Text>bun</Text>) },
-            { key: 4, label: 'short', value: 'short', component: (<Text>short</Text>) },
-            { key: 5, label: 'pixie', value: 'pixie', component: (<Text>pixie</Text>) },
-            { key: 6, label: 'balding', value: 'balding', component: (<Text>balding</Text>) },
-            { key: 7, label: 'buzz', value: 'buzz', component: (<Text>buzz</Text>) },
-            { key: 8, label: 'afro', value: 'afro', component: (<Text>afro</Text>) },
-            { key: 9, label: 'bob', value: 'bob', component: (<Text>bob</Text>) },
-            { key: 10, label: 'mohawk', value: 'mohawk', component: (<Text>mohawk</Text>) }
+            { key: 1, label: translatedValues.hair.selectors.none, value: 'none', component: (<Text style={styles.textSelector}>{translatedValues.hair.selectors.none}</Text>) },
+            { key: 2, label: translatedValues.hair.selectors.long, value: 'long', component: (<Text style={styles.textSelector}>{translatedValues.hair.selectors.long}</Text>) },
+            { key: 3, label: translatedValues.hair.selectors.bun, value: 'bun', component: (<Text style={styles.textSelector}>{translatedValues.hair.selectors.bun}</Text>) },
+            { key: 4, label: translatedValues.hair.selectors.short, value: 'short', component: (<Text style={styles.textSelector}>{translatedValues.hair.selectors.short}</Text>) },
+            { key: 5, label: translatedValues.hair.selectors.pixie, value: 'pixie', component: (<Text style={styles.textSelector}>{translatedValues.hair.selectors.pixie}</Text>) },
+            { key: 6, label: translatedValues.hair.selectors.balding, value: 'balding', component: (<Text style={styles.textSelector}>{translatedValues.hair.selectors.balding}</Text>) },
+            { key: 7, label: translatedValues.hair.selectors.buzz, value: 'buzz', component: (<Text style={styles.textSelector}>{translatedValues.hair.selectors.buzz}</Text>) },
+            { key: 8, label: translatedValues.hair.selectors.afro, value: 'afro', component: (<Text style={styles.textSelector}>{translatedValues.hair.selectors.afro}</Text>) },
+            { key: 9, label: translatedValues.hair.selectors.bob, value: 'bob', component: (<Text style={styles.textSelector}>{translatedValues.hair.selectors.bob}</Text>) },
+            { key: 10, label: translatedValues.hair.selectors.mohawk, value: 'mohawk', component: (<Text style={styles.textSelector}>{translatedValues.hair.selectors.mohawk}</Text>) }
         ],
         colors: {
             name: 'Hair color',
@@ -106,45 +189,45 @@ export const avatarPropsList = [
             type: 'colors',
             selectors: [
                 {
-                    key: 1, label: 'blonde', value: 'blonde', component: (
+                    key: 1, label: translatedValues.hairColor.selectors.blonde, value: 'blonde', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.hair.blonde }]}>
-                            <Text style={{ color: 'black' }}>Blond</Text>
+                            <Text style={[styles.textSelector, { color: 'black' }]}>{translatedValues.hairColor.selectors.blonde}</Text>
                         </View>)
                 },
                 {
-                    key: 2, label: 'orange', value: 'orange', component: (
+                    key: 2, label: translatedValues.hairColor.selectors.orange, value: 'orange', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.hair.orange }]}>
-                            <Text style={{ color: 'white' }}>Orange</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.hairColor.selectors.orange}</Text>
                         </View>)
                 },
                 {
-                    key: 3, label: 'black', value: 'black', component: (
+                    key: 3, label: translatedValues.hairColor.selectors.black, value: 'black', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.hair.black }]}>
-                            <Text style={{ color: 'white' }}>Noir</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.hairColor.selectors.black}</Text>
                         </View>)
                 },
                 {
-                    key: 4, label: 'white', value: 'white', component: (
+                    key: 4, label: translatedValues.hairColor.selectors.white, value: 'white', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.hair.white }]}>
-                            <Text style={{ color: 'black' }}>Blanc</Text>
+                            <Text style={[styles.textSelector, { color: 'black' }]}>{translatedValues.hairColor.selectors.white}</Text>
                         </View>)
                 },
                 {
-                    key: 5, label: 'brown', value: 'brown', component: (
+                    key: 5, label: translatedValues.hairColor.selectors.brown, value: 'brown', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.hair.brown }]}>
-                            <Text style={{ color: 'white' }}>Marron</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.hairColor.selectors.brown}</Text>
                         </View>)
                 },
                 {
-                    key: 6, label: 'blue', value: 'blue', component: (
+                    key: 6, label: translatedValues.hairColor.selectors.blue, value: 'blue', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.hair.blue }]}>
-                            <Text style={{ color: 'white' }}>Bleu</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.hairColor.selectors.blue}</Text>
                         </View>)
                 },
                 {
-                    key: 7, label: 'pink', value: 'pink', component: (
+                    key: 7, label: translatedValues.hairColor.selectors.pink, value: 'pink', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.hair.pink }]}>
-                            <Text style={{ color: 'white' }}>Rose</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.hairColor.selectors.pink}</Text>
                         </View>)
                 }
             ]
@@ -159,8 +242,8 @@ export const avatarPropsList = [
             false: 'false'
         },
         selectors: [
-            { key: 1, label: 'true', value: true, component: (<Text>true</Text>) },
-            { key: 2, label: 'false', value: false, component: (<Text>false</Text>) }
+            { key: 1, label: translatedValues.lashes.selectors.true, value: true, component: (<Text style={styles.textSelector}>{translatedValues.lashes.selectors.true}</Text>) },
+            { key: 2, label: translatedValues.lashes.selectors.false, value: false, component: (<Text style={styles.textSelector}>{translatedValues.lashes.selectors.false}</Text>) }
         ]
     },
     {
@@ -168,22 +251,22 @@ export const avatarPropsList = [
         label: 'eyes',
         type: 'type',
         selectors: [
-            { key: 1, label: 'normal', value: 'normal', component: (<Text>normal</Text>) },
-            { key: 2, label: 'leftTwitch', value: 'leftTwitch', component: (<Text>leftTwitch</Text>) },
-            { key: 3, label: 'happy', value: 'happy', component: (<Text>happy</Text>) },
-            { key: 4, label: 'content', value: 'content', component: (<Text>content</Text>) },
-            { key: 5, label: 'squint', value: 'squint', component: (<Text>squint</Text>) },
-            { key: 6, label: 'simple', value: 'simple', component: (<Text>simple</Text>) },
-            { key: 7, label: 'dizzy', value: 'dizzy', component: (<Text>dizzy</Text>) },
-            { key: 8, label: 'wink', value: 'wink', component: (<Text>wink</Text>) },
-            { key: 9, label: 'hearts', value: 'hearts', component: (<Text>hearts</Text>) },
-            { key: 10, label: 'crazy', value: 'crazy', component: (<Text>crazy</Text>) },
-            { key: 11, label: 'cute', value: 'cute', component: (<Text>cute</Text>) },
-            { key: 12, label: 'dollars', value: 'dollars', component: (<Text>dollars</Text>) },
-            { key: 13, label: 'stars', value: 'stars', component: (<Text>stars</Text>) },
-            { key: 14, label: 'cyborg', value: 'cyborg', component: (<Text>cyborg</Text>) },
-            { key: 15, label: 'simplePatch', value: 'simplePatch', component: (<Text>simplePatch</Text>) },
-            { key: 16, label: 'piratePatch', value: 'piratePatch', component: (<Text>piratePatch</Text>) },
+            { key: 1, label: translatedValues.eyes.selectors.normal, value: 'normal', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.normal}</Text>) },
+            { key: 2, label: translatedValues.eyes.selectors.leftTwitch, value: 'leftTwitch', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.leftTwitch}</Text>) },
+            { key: 3, label: translatedValues.eyes.selectors.happy, value: 'happy', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.happy}</Text>) },
+            { key: 4, label: translatedValues.eyes.selectors.content, value: 'content', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.content}</Text>) },
+            { key: 5, label: translatedValues.eyes.selectors.squint, value: 'squint', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.squint}</Text>) },
+            { key: 6, label: translatedValues.eyes.selectors.simple, value: 'simple', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.simple}</Text>) },
+            { key: 7, label: translatedValues.eyes.selectors.dizzy, value: 'dizzy', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.dizzy}</Text>) },
+            { key: 8, label: translatedValues.eyes.selectors.wink, value: 'wink', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.wink}</Text>) },
+            { key: 9, label: translatedValues.eyes.selectors.hearts, value: 'hearts', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.hearts}</Text>) },
+            { key: 10, label: translatedValues.eyes.selectors.crazy, value: 'crazy', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.crazy}</Text>) },
+            { key: 11, label: translatedValues.eyes.selectors.cute, value: 'cute', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.cute}</Text>) },
+            { key: 12, label: translatedValues.eyes.selectors.dollars, value: 'dollars', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.dollars}</Text>) },
+            { key: 13, label: translatedValues.eyes.selectors.stars, value: 'stars', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.stars}</Text>) },
+            { key: 14, label: translatedValues.eyes.selectors.cyborg, value: 'cyborg', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.cyborg}</Text>) },
+            { key: 15, label: translatedValues.eyes.selectors.simplePatch, value: 'simplePatch', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.simplePatch}</Text>) },
+            { key: 16, label: translatedValues.eyes.selectors.piratePatch, value: 'piratePatch', component: (<Text style={styles.textSelector}>{translatedValues.eyes.selectors.piratePatch}</Text>) },
         ]
     },
     {
@@ -191,11 +274,11 @@ export const avatarPropsList = [
         label: 'eyebrows',
         type: 'strings',
         selectors: [
-            { key: 1, label: 'raised', value: 'raised', component: (<Text>raised</Text>) },
-            { key: 2, label: 'leftLowered', value: 'leftLowered', component: (<Text>leftLowered</Text>) },
-            { key: 3, label: 'serious', value: 'serious', component: (<Text>serious</Text>) },
-            { key: 4, label: 'angry', value: 'angry', component: (<Text>angry</Text>) },
-            { key: 5, label: 'concerned', value: 'concerned', component: (<Text>concerned</Text>) }
+            { key: 1, label: translatedValues.eyebrows.selectors.raised, value: 'raised', component: (<Text style={styles.textSelector}>{translatedValues.eyebrows.selectors.raised}</Text>) },
+            { key: 2, label: translatedValues.eyebrows.selectors.leftLowered, value: 'leftLowered', component: (<Text style={styles.textSelector}>{translatedValues.eyebrows.selectors.leftLowered}</Text>) },
+            { key: 3, label: translatedValues.eyebrows.selectors.serious, value: 'serious', component: (<Text style={styles.textSelector}>{translatedValues.eyebrows.selectors.serious}</Text>) },
+            { key: 4, label: translatedValues.eyebrows.selectors.angry, value: 'angry', component: (<Text style={styles.textSelector}>{translatedValues.eyebrows.selectors.angry}</Text>) },
+            { key: 5, label: translatedValues.eyebrows.selectors.concerned, value: 'concerned', component: (<Text style={styles.textSelector}>{translatedValues.eyebrows.selectors.concerned}</Text>) }
         ]
     },
     {
@@ -203,15 +286,15 @@ export const avatarPropsList = [
         label: 'mouth',
         type: 'strings',
         selectors: [
-            { key: 1, label: 'grin', value: 'grin', component: (<Text>grin</Text>) },
-            { key: 2, label: 'sad', value: 'sad', component: (<Text>sad</Text>) },
-            { key: 3, label: 'openSmile', value: 'openSmile', component: (<Text>openSmile</Text>) },
-            { key: 4, label: 'lips', value: 'lips', component: (<Text>lips</Text>) },
-            { key: 5, label: 'open', value: 'open', component: (<Text>open</Text>) },
-            { key: 6, label: 'serious', value: 'serious', component: (<Text>serious</Text>) },
-            { key: 7, label: 'tongue', value: 'tongue', component: (<Text>tongue</Text>) },
-            { key: 8, label: 'piercedTongue', value: 'piercedTongue', component: (<Text>piercedTongue</Text>) },
-            { key: 9, label: 'vomitingRainbow', value: 'vomitingRainbow', component: (<Text>vomitingRainbow</Text>) }
+            { key: 1, label: translatedValues.mouth.selectors.grin, value: 'grin', component: (<Text style={styles.textSelector}>{translatedValues.mouth.selectors.selectors.grin}</Text>) },
+            { key: 2, label: translatedValues.mouth.selectors.sad, value: 'sad', component: (<Text style={styles.textSelector}>{translatedValues.mouth.selectors.sad}</Text>) },
+            { key: 3, label: translatedValues.mouth.selectors.openSmile, value: 'openSmile', component: (<Text style={styles.textSelector}>{translatedValues.mouth.selectors.openSmile}</Text>) },
+            { key: 4, label: translatedValues.mouth.selectors.lips, value: 'lips', component: (<Text style={styles.textSelector}>{translatedValues.mouth.selectors.lips}</Text>) },
+            { key: 5, label: translatedValues.mouth.selectors.open, value: 'open', component: (<Text style={styles.textSelector}>{translatedValues.mouth.selectors.open}</Text>) },
+            { key: 6, label: translatedValues.mouth.selectors.serious, value: 'serious', component: (<Text style={styles.textSelector}>{translatedValues.mouth.selectors.serious}</Text>) },
+            { key: 7, label: translatedValues.mouth.selectors.tongue, value: 'tongue', component: (<Text style={styles.textSelector}>{translatedValues.mouth.selectors.tongue}</Text>) },
+            { key: 8, label: translatedValues.mouth.selectors.piercedTongue, value: 'piercedTongue', component: (<Text style={styles.textSelector}>{translatedValues.mouth.selectors.piercedTongue}</Text>) },
+            { key: 9, label: translatedValues.mouth.selectors.vomitingRainbow, value: 'vomitingRainbow', component: (<Text style={styles.textSelector}>{translatedValues.mouth.selectors.vomitingRainbow}</Text>) }
         ],
         colors: {
             name: 'LipColor',
@@ -219,33 +302,33 @@ export const avatarPropsList = [
             type: 'colors',
             selectors: [
                 {
-                    key: 1, label: 'red', value: 'red', component: (
+                    key: 1, label: translatedValues.lipColor.selectors.red, value: 'red', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.mouth.red }]}>
-                            <Text style={{ color: 'white' }}>Rouge</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.lipColor.selectors.red}</Text>
                         </View>)
                 },
                 {
-                    key: 2, label: 'purple', value: 'purple', component: (
+                    key: 2, label: translatedValues.lipColor.selectors.purple, value: 'purple', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.mouth.purple }]}>
-                            <Text style={{ color: 'white' }}>Pourpre</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.lipColor.selectors.purple}</Text>
                         </View>)
                 },
                 {
-                    key: 3, label: 'pink', value: 'pink', component: (
+                    key: 3, label: translatedValues.lipColor.selectors.pink, value: 'pink', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.mouth.pink }]}>
-                            <Text style={{ color: 'white' }}>Rose</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.lipColor.selectors.purple}</Text>
                         </View>)
                 },
                 {
-                    key: 4, label: 'turqoise', value: 'turqoise', component: (
+                    key: 4, label: translatedValues.lipColor.selectors.turqoise, value: 'turqoise', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.mouth.turqoise }]}>
-                            <Text style={{ color: 'white' }}>Turquoise</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.lipColor.selectors.turqoise}</Text>
                         </View>)
                 },
                 {
-                    key: 5, label: 'green', value: 'green', component: (
+                    key: 5, label: translatedValues.lipColor.selectors.green, value: 'green', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.mouth.green }]}>
-                            <Text style={{ color: 'white' }}>Vert</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.lipColor.selectors.green}</Text>
                         </View>)
                 }
             ]
@@ -256,10 +339,10 @@ export const avatarPropsList = [
         label: 'facialHair',
         label: 'facialHair',
         selectors: [
-            { key: 1, label: 'none', value: 'none', component: (<Text>none</Text>) },
-            { key: 2, label: 'stubble', value: 'stubble', component: (<Text>stubble</Text>) },
-            { key: 3, label: 'mediumBeard', value: 'mediumBeard', component: (<Text>mediumBeard</Text>) },
-            { key: 4, label: 'goatee', value: 'goatee', component: (<Text>goatee</Text>) }
+            { key: 1, label: translatedValues.facialHair.selectors.none, value: 'none', component: (<Text style={styles.textSelector}>{translatedValues.facialHair.selectors.none}</Text>) },
+            { key: 2, label: translatedValues.facialHair.selectors.stubble, value: 'stubble', component: (<Text style={styles.textSelector}>{translatedValues.facialHair.selectors.stubble}</Text>) },
+            { key: 3, label: translatedValues.facialHair.selectors.mediumBeard, value: 'mediumBeard', component: (<Text style={styles.textSelector}>{translatedValues.facialHair.selectors.mediumBeard}</Text>) },
+            { key: 4, label: translatedValues.facialHair.selectors.goatee, value: 'goatee', component: (<Text style={styles.textSelector}>{translatedValues.facialHair.selectors.goatee}</Text>) }
         ]
     },
     {
@@ -267,12 +350,12 @@ export const avatarPropsList = [
         label: 'skinTone',
         type: 'colors',
         selectors: [
-            { key: 1, label: 'light', value: 'light', component: (<Text>light</Text>) },
-            { key: 2, label: 'yellow', value: 'yellow', component: (<Text>yellow</Text>) },
-            { key: 3, label: 'brown', value: 'brown', component: (<Text>brown</Text>) },
-            { key: 4, label: 'dark', value: 'dark', component: (<Text>dark</Text>) },
-            { key: 5, label: 'red', value: 'red', component: (<Text>red</Text>) },
-            { key: 6, label: 'black', value: 'black', component: (<Text>black</Text>) }
+            { key: 1, label: translatedValues.skinTone.selectors.light, value: 'light', component: (<Text style={styles.textSelector}>{translatedValues.skinTone.selectors.light}</Text>) },
+            { key: 2, label: translatedValues.skinTone.selectors.yellow, value: 'yellow', component: (<Text style={styles.textSelector}>{translatedValues.skinTone.selectors.yellow}</Text>) },
+            { key: 3, label: translatedValues.skinTone.selectors.brown, value: 'brown', component: (<Text style={styles.textSelector}>{translatedValues.skinTone.selectors.brown}</Text>) },
+            { key: 4, label: translatedValues.skinTone.selectors.dark, value: 'dark', component: (<Text style={styles.textSelector}>{translatedValues.skinTone.selectors.dark}</Text>) },
+            { key: 5, label: translatedValues.skinTone.selectors.red, value: 'red', component: (<Text style={styles.textSelector}>{translatedValues.skinTone.selectors.red}</Text>) },
+            { key: 6, label: translatedValues.skinTone.selectors.black, value: 'black', component: (<Text style={styles.textSelector}>{translatedValues.skinTone.selectors.black}</Text>) }
         ]
     },
     {
@@ -280,12 +363,12 @@ export const avatarPropsList = [
         label: 'accessory',
         type: 'strings',
         selectors: [
-            { key: 1, label: 'none', value: 'none', component: (<Text>none</Text>) },
-            { key: 2, label: 'roundGlasses', value: 'roundGlasses', component: (<Text>roundGlasses</Text>) },
-            { key: 3, label: 'tinyGlasses', value: 'tinyGlasses', component: (<Text>tinyGlasses</Text>) },
-            { key: 4, label: 'shades', value: 'shades', component: (<Text>shades</Text>) },
-            { key: 5, label: 'faceMask', value: 'faceMask', component: (<Text>faceMask</Text>) },
-            { key: 6, label: 'hoopEarrings', value: 'hoopEarrings', component: (<Text>hoopEarrings</Text>) }
+            { key: 1, label: translatedValues.accessory.selectors.none, value: 'none', component: (<Text style={styles.textSelector}>{translatedValues.accessory.selectors.none}</Text>) },
+            { key: 2, label: translatedValues.accessory.selectors.roundGlasses, value: 'roundGlasses', component: (<Text style={styles.textSelector}>{translatedValues.accessory.selectors.roundGlasses}</Text>) },
+            { key: 3, label: translatedValues.accessory.selectors.tinyGlasses, value: 'tinyGlasses', component: (<Text style={styles.textSelector}>{translatedValues.accessory.selectors.tinyGlasses}</Text>) },
+            { key: 4, label: translatedValues.accessory.selectors.shades, value: 'shades', component: (<Text style={styles.textSelector}>{translatedValues.accessory.selectors.shades}</Text>) },
+            { key: 5, label: translatedValues.accessory.selectors.faceMask, value: 'faceMask', component: (<Text style={styles.textSelector}>{translatedValues.accessory.selectors.faceMask}</Text>) },
+            { key: 6, label: translatedValues.accessory.selectors.hoopEarrings, value: 'hoopEarrings', component: (<Text style={styles.textSelector}>{translatedValues.accessory.selectors.hoopEarrings}</Text>) }
         ]
     },
     {
@@ -293,8 +376,8 @@ export const avatarPropsList = [
         label: 'body',
         type: 'strings',
         selectors: [
-            { key: 1, label: 'chest', value: 'chest', component: (<Text>chest</Text>) },
-            { key: 2, label: 'breasts', value: 'breasts', component: (<Text>breasts</Text>) }
+            { key: 1, label: translatedValues.body.selectors.chest, value: 'chest', component: (<Text style={styles.textSelector}>{translatedValues.body.selectors.chest}</Text>) },
+            { key: 2, label: translatedValues.body.selectors.breasts, value: 'breasts', component: (<Text style={styles.textSelector}>{translatedValues.body.selectors.breasts}</Text>) }
         ]
     },
     {
@@ -302,16 +385,16 @@ export const avatarPropsList = [
         label: 'clothing',
         type: 'strings',
         selectors: [
-            { key: 1, label: 'naked', value: 'naked', component: (<Text>naked</Text>) },
-            { key: 2, label: 'shirt', value: 'shirt', component: (<Text>shirt</Text>) },
-            { key: 3, label: 'dressShirt', value: 'dressShirt', component: (<Text>dressShirt</Text>) },
-            { key: 4, label: 'vneck', value: 'vneck', component: (<Text>vneck</Text>) },
-            { key: 5, label: 'tankTop', value: 'tankTop', component: (<Text>tankTop</Text>) },
-            { key: 6, label: 'dress', value: 'dress', component: (<Text>dress</Text>) },
-            { key: 7, label: 'denimJacket', value: 'denimJacket', component: (<Text>denimJacket</Text>) },
-            { key: 8, label: 'hoodie', value: 'hoodie', component: (<Text>hoodie</Text>) },
-            { key: 9, label: 'chequeredShirt', value: 'chequeredShirt', component: (<Text>chequeredShirt</Text>) },
-            { key: 10, label: 'chequeredShirtDark', value: 'chequeredShirtDark', component: (<Text>chequeredShirtDark</Text>) }
+            { key: 1, label: translatedValues.clothing.selectors.naked, value: 'naked', component: (<Text style={styles.textSelector}>{translatedValues.clothing.selectors.naked}</Text>) },
+            { key: 2, label: translatedValues.clothing.selectors.shirt, value: 'shirt', component: (<Text style={styles.textSelector}>{translatedValues.clothing.selectors.shirt}</Text>) },
+            { key: 3, label: translatedValues.clothing.selectors.dressShirt, value: 'dressShirt', component: (<Text style={styles.textSelector}>{translatedValues.clothing.selectors.dressShirt}</Text>) },
+            { key: 4, label: translatedValues.clothing.selectors.vneck, value: 'vneck', component: (<Text style={styles.textSelector}>{translatedValues.clothing.selectors.vneck}</Text>) },
+            { key: 5, label: translatedValues.clothing.selectors.tankTop, value: 'tankTop', component: (<Text style={styles.textSelector}>{translatedValues.clothing.selectors.tankTop}</Text>) },
+            { key: 6, label: translatedValues.clothing.selectors.dress, value: 'dress', component: (<Text style={styles.textSelector}>{translatedValues.clothing.selectors.dress}</Text>) },
+            { key: 7, label: translatedValues.clothing.selectors.denimJacket, value: 'denimJacket', component: (<Text style={styles.textSelector}>{translatedValues.clothing.selectors.denimJacket}</Text>) },
+            { key: 8, label: translatedValues.clothing.selectors.hoodie, value: 'hoodie', component: (<Text style={styles.textSelector}>{translatedValues.clothing.selectors.hoodie}</Text>) },
+            { key: 9, label: translatedValues.clothing.selectors.chequeredShirt, value: 'chequeredShirt', component: (<Text style={styles.textSelector}>{translatedValues.clothing.selectors.chequeredShirt}</Text>) },
+            { key: 10, label: translatedValues.clothing.selectors.chequeredShirtDark, value: 'chequeredShirtDark', component: (<Text style={styles.textSelector}>{translatedValues.clothing.selectors.chequeredShirtDark}</Text>) }
         ],
         colors: {
             name: 'Clothing color',
@@ -319,33 +402,33 @@ export const avatarPropsList = [
             type: 'colors',
             selectors: [
                 {
-                    key: 1, label: 'white', value: 'white', component: (
+                    key: 1, label: translatedValues.clothingColor.selectors.white, value: 'white', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.clothing.white }]}>
-                            <Text style={{ color: 'black' }}>Blanc</Text>
+                            <Text style={[styles.textSelector, { color: 'black' }]}>{translatedValues.clothingColor.selectors.white}</Text>
                         </View>)
                 },
                 {
-                    key: 2, label: 'blue', value: 'blue', component: (
+                    key: 2, label: translatedValues.clothingColor.selectors.blue, value: 'blue', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.clothing.blue }]}>
-                            <Text style={{ color: 'white' }}>Bleu</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.clothingColor.selectors.blue}</Text>
                         </View>)
                 },
                 {
-                    key: 3, label: 'black', value: 'black', component: (
+                    key: 3, label: translatedValues.clothingColor.selectors.black, value: 'black', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.clothing.black }]}>
-                            <Text style={{ color: 'white' }}>Noir</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.clothingColor.selectors.black}</Text>
                         </View>)
                 },
                 {
-                    key: 4, label: 'green', value: 'green', component: (
+                    key: 4, label: translatedValues.clothingColor.selectors.green, value: 'green', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.clothing.green }]}>
-                            <Text style={{ color: 'white' }}>Vert</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.clothingColor.selectors.green}</Text>
                         </View>)
                 },
                 {
-                    key: 5, label: 'red', value: 'red', component: (
+                    key: 5, label: translatedValues.clothingColor.selectors.red, value: 'red', component: (
                         <View style={[styles.colorViewSelector, { backgroundColor: colors.clothing.red }]}>
-                            <Text style={{ color: 'white' }}>Rouge</Text>
+                            <Text style={[styles.textSelector, { color: 'white' }]}>{translatedValues.clothingColor.selectors.red}</Text>
                         </View>)
                 }
             ]
@@ -356,14 +439,14 @@ export const avatarPropsList = [
         label: 'graphic',
         type: 'strings',
         selectors: [
-            { key: 1, label: 'none', value: 'none', component: (<Text>none</Text>) },
-            { key: 2, label: 'redwood', value: 'redwood', component: (<Text>redwood</Text>) },
-            { key: 3, label: 'gatsby', value: 'gatsby', component: (<Text>gatsby</Text>) },
-            { key: 4, label: 'vue', value: 'vue', component: (<Text>vue</Text>) },
-            { key: 5, label: 'react', value: 'react', component: (<Text>react</Text>) },
-            { key: 6, label: 'graphQL', value: 'graphQL', component: (<Text>graphQL</Text>) },
-            { key: 7, label: 'donut', value: 'donut', component: (<Text>donut</Text>) },
-            { key: 8, label: 'rainbow', value: 'rainbow', component: (<Text>rainbow</Text>) }
+            { key: 1, label: translatedValues.graphic.selectors.none, value: 'none', component: (<Text style={styles.textSelector}>{translatedValues.graphic.selectors.none}</Text>) },
+            { key: 2, label: translatedValues.graphic.selectors.redwood, value: 'redwood', component: (<Text style={styles.textSelector}>{translatedValues.graphic.selectors.redwood}</Text>) },
+            { key: 3, label: translatedValues.graphic.selectors.gatsby, value: 'gatsby', component: (<Text style={styles.textSelector}>{translatedValues.graphic.selectors.gatsby}</Text>) },
+            { key: 4, label: translatedValues.graphic.selectors.vue, value: 'vue', component: (<Text style={styles.textSelector}>{translatedValues.graphic.selectors.vue}</Text>) },
+            { key: 5, label: translatedValues.graphic.selectors.react, value: 'react', component: (<Text style={styles.textSelector}>{translatedValues.graphic.selectors.react}</Text>) },
+            { key: 6, label: translatedValues.graphic.selectors.graphQL, value: 'graphQL', component: (<Text style={styles.textSelector}>{translatedValues.graphic.selectors.graphQL}</Text>) },
+            { key: 7, label: translatedValues.graphic.selectors.donut, value: 'donut', component: (<Text style={styles.textSelector}>{translatedValues.graphic.selectors.donut}</Text>) },
+            { key: 8, label: translatedValues.graphic.selectors.rainbow, value: 'rainbow', component: (<Text style={styles.textSelector}>{translatedValues.graphic.selectors.rainbow}</Text>) }
         ]
     }
 ]
